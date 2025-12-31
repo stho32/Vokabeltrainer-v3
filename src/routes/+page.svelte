@@ -28,21 +28,30 @@
 		const training = trainings.find((t) => t.id === trainingId);
 		if (!training || training.questions.length === 0) return 100;
 
-		let totalScore = 0;
-		let maxScore = 0;
+		const MIN_SCORE = -20;
+		const MAX_SCORE = 10;
+		const SCORE_RANGE = MAX_SCORE - MIN_SCORE; // 30
+
+		let totalNormalized = 0;
 
 		for (const question of training.questions) {
 			const questionText = question.type === 'word-search' ? question.title : question.question;
 			const hash = hashQuestion(questionText);
-			const score = scoreStore.getScore(hash);
-			totalScore += score;
-			maxScore += 10; // MAX_SCORE
+
+			// Unbeantwortete Fragen zählen als 0%, nicht als 67%
+			if (!scoreStore.hasScore(hash)) {
+				totalNormalized += 0;
+			} else {
+				const score = scoreStore.getScore(hash);
+				// Normalisiere Score von [-20, +10] auf [0, 1]
+				const normalized = (score - MIN_SCORE) / SCORE_RANGE;
+				totalNormalized += normalized;
+			}
 		}
 
-		if (maxScore === 0) return 100;
-		// Normalize to 0-100% (scores range from -20 to +10)
-		const normalized = ((totalScore + training.questions.length * 20) / (maxScore + training.questions.length * 20)) * 100;
-		return Math.round(normalized);
+		// Durchschnitt der normalisierten Werte als Prozent
+		const percentage = (totalNormalized / training.questions.length) * 100;
+		return Math.round(percentage);
 	}
 
 	function canStart(): boolean {

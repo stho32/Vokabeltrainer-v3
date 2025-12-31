@@ -39,6 +39,10 @@ class ScoreStore {
 		return this.scores.get(hash) ?? 0;
 	}
 
+	hasScore(hash: string): boolean {
+		return this.scores.has(hash);
+	}
+
 	recordCorrect(hash: string): number {
 		const current = this.getScore(hash);
 		const newScore = Math.min(current + CORRECT_POINTS, MAX_SCORE);
