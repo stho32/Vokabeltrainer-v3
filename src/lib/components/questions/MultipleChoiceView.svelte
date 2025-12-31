@@ -55,7 +55,7 @@
 				toggleOption(index);
 			}
 		}
-		if (event.key === 'Enter' && !event.ctrlKey) {
+		if (event.key === 'Enter') {
 			event.preventDefault();
 			handleSubmit();
 		}
@@ -63,8 +63,10 @@
 
 	function getOptionClass(option: ShuffledOption, index: number): string {
 		if (!evaluated) return '';
-		if (option.correct) return 'correct';
-		if (selected.includes(index) && !option.correct) return 'incorrect';
+		const wasSelected = selected.includes(index);
+		if (option.correct && wasSelected) return 'correct selected';
+		if (option.correct && !wasSelected) return 'correct missed';
+		if (wasSelected && !option.correct) return 'incorrect selected';
 		return '';
 	}
 </script>
@@ -163,14 +165,49 @@
 		color: #666;
 	}
 
-	.option.correct {
+	.option.correct.selected {
 		background-color: #e8f5e9;
 		border-color: var(--color-success);
+		border-width: 3px;
 	}
 
-	.option.incorrect {
+	.option.correct.selected::before {
+		content: '✓ Richtig ausgewählt';
+		display: block;
+		font-size: 0.75rem;
+		font-weight: bold;
+		color: var(--color-success);
+		margin-bottom: 0.25rem;
+	}
+
+	.option.correct.missed {
+		background-color: #fff3e0;
+		border-color: #ff9800;
+		border-style: dashed;
+	}
+
+	.option.correct.missed::before {
+		content: '⚠ Nicht ausgewählt (wäre richtig)';
+		display: block;
+		font-size: 0.75rem;
+		font-weight: bold;
+		color: #e65100;
+		margin-bottom: 0.25rem;
+	}
+
+	.option.incorrect.selected {
 		background-color: #ffebee;
 		border-color: var(--color-error);
+		border-width: 3px;
+	}
+
+	.option.incorrect.selected::before {
+		content: '✗ Falsch ausgewählt';
+		display: block;
+		font-size: 0.75rem;
+		font-weight: bold;
+		color: var(--color-error);
+		margin-bottom: 0.25rem;
 	}
 
 	.hint {
