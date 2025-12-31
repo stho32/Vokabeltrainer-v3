@@ -6,16 +6,16 @@ Implementierung von Multiple-Choice-Fragen mit Checkboxen und Mehrfachauswahl.
 
 ## Akzeptanzkriterien
 
-- [ ] Mehrere Optionen werden als Checkboxen angezeigt
-- [ ] Mehrfachauswahl ist möglich
-- [ ] Optionen können Begründungen enthalten (richtig/falsch)
-- [ ] Optionen werden zufällig angeordnet bei jeder Anzeige
-- [ ] Korrekte Antworten werden nach Auswertung visuell hervorgehoben
-- [ ] Begründungen werden nach Auswertung angezeigt
+- [x] Mehrere Optionen werden als Checkboxen angezeigt
+- [x] Mehrfachauswahl ist möglich
+- [x] Optionen können Begründungen enthalten (richtig/falsch)
+- [x] Optionen werden zufällig angeordnet bei jeder Anzeige
+- [x] Korrekte Antworten werden nach Auswertung visuell hervorgehoben
+- [x] Begründungen werden nach Auswertung angezeigt
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

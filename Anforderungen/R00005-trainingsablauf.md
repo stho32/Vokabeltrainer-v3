@@ -7,38 +7,38 @@ Der eigentliche Ablauf einer Trainings-Session von Start bis Abschluss.
 ## Akzeptanzkriterien
 
 ### Fragenanzeige
-- [ ] Trainingsname wird angezeigt
-- [ ] Positionsanzeige (z.B. "5 / 100")
-- [ ] Aktueller Aufgabenpunkte-Stand wird angezeigt (z.B. "[APS: 2]")
-- [ ] Fragebereich unterstützt HTML-Formatierung
-- [ ] Antwortbereich: Textarea für Textfragen, Checkboxen für MC
+- [x] Trainingsname wird angezeigt
+- [x] Positionsanzeige (z.B. "5 / 100")
+- [x] Aktueller Aufgabenpunkte-Stand wird angezeigt (z.B. "[APS: 2]")
+- [x] Fragebereich unterstützt HTML-Formatierung
+- [x] Antwortbereich: Textarea für Textfragen, Checkboxen für MC
 
 ### Steuerung
-- [ ] "Antwort anzeigen"-Button zeigt die korrekte Antwort
-- [ ] "Antworten!"-Button (oder Strg+Enter) zur Auswertung
+- [x] "Antwort anzeigen"-Button zeigt die korrekte Antwort
+- [x] "Antworten!"-Button (oder Strg+Enter) zur Auswertung
 
 ### Auswertung bei richtiger Antwort
-- [ ] Grüner Hintergrundblitz als visuelles Feedback
-- [ ] Automatisch weiter zur nächsten Frage (1 Sekunde Verzögerung)
-- [ ] Punktestand wird aktualisiert (+1)
+- [x] Grüner Hintergrundblitz als visuelles Feedback
+- [x] Automatisch weiter zur nächsten Frage (1 Sekunde Verzögerung)
+- [x] Punktestand wird aktualisiert (+1)
 
 ### Auswertung bei falscher Antwort
-- [ ] Roter Hintergrundblitz als visuelles Feedback
-- [ ] Korrekte Antwort wird angezeigt
-- [ ] Frage wird zweimal direkt wiederholt
-- [ ] Frage wird später erneut gestellt
-- [ ] Punktestand wird aktualisiert (-5)
+- [x] Roter Hintergrundblitz als visuelles Feedback
+- [x] Korrekte Antwort wird angezeigt
+- [x] Frage wird zweimal direkt wiederholt
+- [x] Frage wird später erneut gestellt
+- [x] Punktestand wird aktualisiert (-5)
 
 ### Abschluss
-- [ ] "SEHR GUT!" Nachricht bei erfolgreicher Beendigung
-- [ ] Bilanz mit Anzahl richtiger/falscher Antworten
+- [x] "SEHR GUT!" Nachricht bei erfolgreicher Beendigung
+- [x] Bilanz mit Anzahl richtiger/falscher Antworten
 
 ### Bilanz in Navbar
-- [ ] Laufende Bilanz wird in der Navbar angezeigt
+- [x] Laufende Bilanz wird in der Navbar angezeigt
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

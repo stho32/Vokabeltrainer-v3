@@ -6,16 +6,16 @@ Persistierung aller Einstellungen und Fortschritte im LocalStorage des Browsers.
 
 ## Akzeptanzkriterien
 
-- [ ] Trainingsauswahl wird gespeichert und beim Start wiederhergestellt
-- [ ] Fragenanzahl-Auswahl wird gespeichert und wiederhergestellt
-- [ ] Reihenfolge-Auswahl wird gespeichert und wiederhergestellt
-- [ ] Aufgabenpunkte werden gespeichert und wiederhergestellt
-- [ ] Daten bleiben über Browser-Sessions hinweg erhalten
-- [ ] Fehlerhafte Daten werden graceful behandelt (Fallback auf Defaults)
+- [x] Trainingsauswahl wird gespeichert und beim Start wiederhergestellt
+- [x] Fragenanzahl-Auswahl wird gespeichert und wiederhergestellt
+- [x] Reihenfolge-Auswahl wird gespeichert und wiederhergestellt
+- [x] Aufgabenpunkte werden gespeichert und wiederhergestellt
+- [x] Daten bleiben über Browser-Sessions hinweg erhalten
+- [x] Fehlerhafte Daten werden graceful behandelt (Fallback auf Defaults)
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

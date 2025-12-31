@@ -6,17 +6,17 @@ Implementierung von Textfragen mit freier Texteingabe und toleranter Antwortprü
 
 ## Akzeptanzkriterien
 
-- [ ] Freie Texteingabe über Textarea-Element
-- [ ] Tolerante Antwortprüfung ignoriert Groß-/Kleinschreibung
-- [ ] Tolerante Antwortprüfung ignoriert führende/abschließende Leerzeichen
-- [ ] Mehrfach-Leerzeichen werden auf ein Leerzeichen reduziert
-- [ ] Optionale Vorbelegung mit Initialwert möglich
-- [ ] HTML-Unterstützung in der Fragestellung
-- [ ] Mehrere korrekte Antworten können definiert werden
+- [x] Freie Texteingabe über Textarea-Element
+- [x] Tolerante Antwortprüfung ignoriert Groß-/Kleinschreibung
+- [x] Tolerante Antwortprüfung ignoriert führende/abschließende Leerzeichen
+- [x] Mehrfach-Leerzeichen werden auf ein Leerzeichen reduziert
+- [x] Optionale Vorbelegung mit Initialwert möglich
+- [x] HTML-Unterstützung in der Fragestellung
+- [x] Mehrere korrekte Antworten können definiert werden
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

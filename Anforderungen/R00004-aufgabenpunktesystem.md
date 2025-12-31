@@ -7,24 +7,24 @@ System zur Verfolgung des Lernfortschritts für jede Frage mit Priorisierung sch
 ## Akzeptanzkriterien
 
 ### Punktevergabe
-- [ ] Jede Frage wird durch einen Hash identifiziert
-- [ ] Punktebereich: -20 bis +10 Punkte
-- [ ] Richtige Antwort: +1 Punkt
-- [ ] Falsche Antwort: -5 Punkte
-- [ ] Initiale Punkte: 0
+- [x] Jede Frage wird durch einen Hash identifiziert
+- [x] Punktebereich: -20 bis +10 Punkte
+- [x] Richtige Antwort: +1 Punkt
+- [x] Falsche Antwort: -5 Punkte
+- [x] Initiale Punkte: 0
 
 ### Priorisierung
-- [ ] Fragen mit niedrigerem Punktestand erscheinen häufiger
-- [ ] Probabilistischer Filter: Gut beherrschte Fragen werden mit höherer Wahrscheinlichkeit übersprungen
-- [ ] Überspringen basiert auf Punktestand (höherer Score = höhere Überspring-Wahrscheinlichkeit)
+- [x] Fragen mit niedrigerem Punktestand erscheinen häufiger
+- [x] Probabilistischer Filter: Gut beherrschte Fragen werden mit höherer Wahrscheinlichkeit übersprungen
+- [x] Überspringen basiert auf Punktestand (höherer Score = höhere Überspring-Wahrscheinlichkeit)
 
 ### Anzeige
-- [ ] Aktueller Punktestand wird bei jeder Frage angezeigt (APS = Aufgabenpunkte-Stand)
-- [ ] Gesamtpunktestand pro Training in der Übersicht
+- [x] Aktueller Punktestand wird bei jeder Frage angezeigt (APS = Aufgabenpunkte-Stand)
+- [x] Gesamtpunktestand pro Training in der Übersicht
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

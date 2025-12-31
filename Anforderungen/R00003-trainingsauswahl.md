@@ -7,32 +7,32 @@ Konfigurationsbereich für die Auswahl von Trainingsmodulen und Trainingsparamet
 ## Akzeptanzkriterien
 
 ### Trainingsauswahl
-- [ ] Auswahl eines oder mehrerer Trainingsmodule via Checkboxen
-- [ ] Alphabetische Sortierung der verfügbaren Trainings
-- [ ] Anzeige der Aufgabenanzahl pro Training
-- [ ] Anzeige des aktuellen Punktestands pro Training
-- [ ] Farbcodierte Punkteanzeige (grün >= 90%, sonst rot)
+- [x] Auswahl eines oder mehrerer Trainingsmodule via Checkboxen
+- [x] Alphabetische Sortierung der verfügbaren Trainings
+- [x] Anzeige der Aufgabenanzahl pro Training
+- [x] Anzeige des aktuellen Punktestands pro Training
+- [x] Farbcodierte Punkteanzeige (grün >= 90%, sonst rot)
 
 ### Fragenanzahl
-- [ ] Radiobuttons für Fragenanzahl-Auswahl
-- [ ] Option: 5 Fragen (für hartnäckige Themen)
-- [ ] Option: 30 Fragen (ca. 45 Minuten)
-- [ ] Option: 45 Fragen (ca. 1 Stunde)
-- [ ] Option: 100 Fragen (ca. 2 Stunden, Intensivtraining)
-- [ ] Option: Alle verfügbaren Fragen
+- [x] Radiobuttons für Fragenanzahl-Auswahl
+- [x] Option: 5 Fragen (für hartnäckige Themen)
+- [x] Option: 30 Fragen (ca. 45 Minuten)
+- [x] Option: 45 Fragen (ca. 1 Stunde)
+- [x] Option: 100 Fragen (ca. 2 Stunden, Intensivtraining)
+- [x] Option: Alle verfügbaren Fragen
 
 ### Reihenfolge
-- [ ] Radiobuttons für Reihenfolge-Auswahl
-- [ ] Option: Nacheinander (sequentiell)
-- [ ] Option: Zufällig
+- [x] Radiobuttons für Reihenfolge-Auswahl
+- [x] Option: Nacheinander (sequentiell)
+- [x] Option: Zufällig
 
 ### Steuerung
-- [ ] "Training starten"-Button
-- [ ] Button ist deaktiviert wenn kein Training ausgewählt
+- [x] "Training starten"-Button
+- [x] Button ist deaktiviert wenn kein Training ausgewählt
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 

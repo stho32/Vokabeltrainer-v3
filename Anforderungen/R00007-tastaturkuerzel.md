@@ -6,15 +6,15 @@ Implementierung von Tastaturkürzeln für effizientes Arbeiten.
 
 ## Akzeptanzkriterien
 
-- [ ] Enter oder Strg+Enter sendet die Antwort ab
-- [ ] Tasten 1-9 wählen/deselektieren Multiple-Choice-Optionen
-- [ ] Tab fügt 4 Leerzeichen in Textfelder ein (statt Fokus-Wechsel)
-- [ ] Tastaturkürzel funktionieren nur während eines aktiven Trainings
-- [ ] Tastaturkürzel sind dokumentiert / für Benutzer sichtbar
+- [x] Enter oder Strg+Enter sendet die Antwort ab
+- [x] Tasten 1-9 wählen/deselektieren Multiple-Choice-Optionen
+- [x] Tab fügt 4 Leerzeichen in Textfelder ein (statt Fokus-Wechsel)
+- [x] Tastaturkürzel funktionieren nur während eines aktiven Trainings
+- [x] Tastaturkürzel sind dokumentiert / für Benutzer sichtbar
 
 ## Status
 
-- [ ] Nicht begonnen
+- [x] Abgeschlossen
 
 ## Technische Details
 
