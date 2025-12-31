@@ -5,16 +5,27 @@ Initialize a complete Svelte 5 / SvelteKit project structure with requirements d
 ## Arguments
 - $ARGUMENTS: Application name and optional description (e.g., "my-app A todo application with user authentication")
 
+## Version Requirements
+
+**IMPORTANT: This command explicitly targets Svelte 5.**
+
+- **Svelte**: Version 5.x (uses Runes: `$state`, `$derived`, `$effect`, `$props`)
+- **SvelteKit**: Version 2.x
+- **Vite**: Version 6.x
+- **TypeScript**: Version 5.x
+
+If a newer major version of Svelte is available (e.g., Svelte 6), inform the user but continue using Svelte 5. The architecture documentation and patterns in this command are specifically designed for Svelte 5's runes-based reactivity system. Upgrading to a newer Svelte version would require updating the architecture documentation first.
+
 ## Purpose
 
-This command sets up a new Svelte application from scratch or enhances an existing repository with the proper structure. It:
-- Creates the SvelteKit project structure if not present
+This command sets up a new Svelte 5 application from scratch or enhances an existing repository with the proper structure. It:
+- Creates the SvelteKit project structure with **Svelte 5** dependencies
 - Creates a proper `.gitignore` file for SvelteKit projects
-- Makes the svelte-app-architecture documentation available locally
+- Makes the svelte-app-architecture documentation available locally (Svelte 5 specific)
 - Sets up a requirements tracking system in German ("Anforderungen")
 - Creates initial documentation
 
-Use this command when starting a new Svelte project or when you need to add proper structure and requirements tracking to an existing codebase.
+Use this command when starting a new Svelte 5 project or when you need to add proper structure and requirements tracking to an existing codebase.
 
 ## Plan
 
@@ -50,10 +61,24 @@ Use this command when starting a new Svelte project or when you need to add prop
 ### Phase 3: Create Project Structure
 
 1. **Initialize SvelteKit project (if not present)**
-   - Create `package.json` with Svelte 5 and SvelteKit dependencies
+   - Create `package.json` with explicit Svelte 5 dependencies:
+     ```json
+     {
+       "devDependencies": {
+         "@sveltejs/adapter-auto": "^3.0.0",
+         "@sveltejs/kit": "^2.0.0",
+         "@sveltejs/vite-plugin-svelte": "^5.0.0",
+         "svelte": "^5.0.0",
+         "svelte-check": "^4.0.0",
+         "typescript": "^5.0.0",
+         "vite": "^6.0.0"
+       }
+     }
+     ```
    - Create `svelte.config.js` with adapter-auto
    - Create `vite.config.ts`
    - Create `tsconfig.json` for TypeScript support
+   - **Note**: Always use `^5.0.0` for Svelte to stay on version 5.x
 
 2. **Create source directory structure**
    ```
