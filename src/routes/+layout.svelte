@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import { base } from '$app/paths';
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
 	import { logger } from '$lib/utils/logger';
 
@@ -15,7 +16,7 @@
 
 {#if trainingSessionStore.isActive && !trainingSessionStore.isComplete}
 	<nav class="navbar">
-		<a href="/" class="logo">Vokabeltrainer</a>
+		<a href="{base}/" class="logo">Vokabeltrainer</a>
 		<div class="bilanz">
 			<span class="correct">Richtig: {trainingSessionStore.correctCount}</span>
 			<span class="divider">|</span>

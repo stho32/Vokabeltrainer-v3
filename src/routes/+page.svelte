@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { base } from '$app/paths';
 	import { configStore } from '$lib/stores/config.svelte';
 	import { scoreStore } from '$lib/stores/scores.svelte';
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
@@ -74,7 +75,7 @@
 		});
 		const selected = getSelectedTrainings(configStore.selectedTrainings);
 		trainingSessionStore.start(selected);
-		goto('/training');
+		goto(`${base}/training`);
 	}
 
 	function getCountLabel(count: number | 'all'): string {

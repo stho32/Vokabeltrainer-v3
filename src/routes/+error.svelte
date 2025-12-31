@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { base } from '$app/paths';
 </script>
 
 <main>
 	<h1>{$page.status}</h1>
 	<p>{$page.error?.message ?? 'Ein Fehler ist aufgetreten'}</p>
-	<a href="/">Zurück zur Startseite</a>
+	<a href="{base}/">Zurück zur Startseite</a>
 </main>
 
 <style>

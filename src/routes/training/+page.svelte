@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import { base } from '$app/paths';
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
 	import { scoreStore } from '$lib/stores/scores.svelte';
 	import { logger } from '$lib/utils/logger';
@@ -13,7 +14,7 @@
 	$effect(() => {
 		if (browser && !trainingSessionStore.isActive && !trainingSessionStore.isComplete) {
 			logger.event('TrainingPage', 'Redirect zu Home (keine aktive Session)');
-			goto('/');
+			goto(`${base}/`);
 		}
 	});
 
@@ -44,7 +45,7 @@
 	function handleBackToSelection() {
 		logger.action('TrainingPage', 'Click: Zurück zur Auswahl');
 		trainingSessionStore.end();
-		goto('/');
+		goto(`${base}/`);
 	}
 
 	function getCurrentAPS(): number {
