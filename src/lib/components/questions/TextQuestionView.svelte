@@ -14,9 +14,13 @@
 	let userAnswer = $state('');
 	let textareaRef: HTMLTextAreaElement | undefined = $state();
 
-	// Reset user answer when question changes
+	// Reset user answer and focus textarea when question changes
 	$effect(() => {
 		userAnswer = question.initialValue ?? '';
+		// Focus textarea when question changes
+		if (textareaRef) {
+			textareaRef.focus();
+		}
 	});
 
 	function handleSubmit() {

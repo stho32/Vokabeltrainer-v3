@@ -18,6 +18,7 @@
 
 	let shuffledOptions = $state<ShuffledOption[]>([]);
 	let selected = $state<number[]>([]);
+	let optionsContainerRef: HTMLDivElement | undefined = $state();
 
 	// Shuffle options when question changes
 	$effect(() => {
@@ -25,6 +26,13 @@
 			question.options.map((opt, i) => ({ ...opt, originalIndex: i }))
 		);
 		selected = [];
+		// Focus first checkbox when question changes
+		if (optionsContainerRef) {
+			const firstCheckbox = optionsContainerRef.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+			if (firstCheckbox) {
+				firstCheckbox.focus();
+			}
+		}
 	});
 
 	function toggleOption(index: number) {
@@ -78,7 +86,7 @@
 		{@html question.question}
 	</div>
 
-	<div class="options">
+	<div class="options" bind:this={optionsContainerRef}>
 		{#each shuffledOptions as option, i}
 			<label class="option {getOptionClass(option, i)}">
 				<input
