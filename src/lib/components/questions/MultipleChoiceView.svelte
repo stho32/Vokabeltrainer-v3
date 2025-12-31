@@ -2,6 +2,7 @@
 	import type { MultipleChoiceQuestion, MultipleChoiceOption } from '$lib/types';
 	import { shuffle } from '$lib/utils/shuffle';
 	import { checkMultipleChoice } from '$lib/utils/answer-check';
+	import { logger } from '$lib/utils/logger';
 
 	interface Props {
 		question: MultipleChoiceQuestion;
@@ -19,18 +20,28 @@
 	let shuffledOptions = $state<ShuffledOption[]>([]);
 	let selected = $state<number[]>([]);
 	let optionsContainerRef: HTMLDivElement | undefined = $state();
+	let lastQuestionId = $state('');
 
-	// Shuffle options when question changes
+	// Shuffle options and reset selection only when question actually changes
 	$effect(() => {
-		shuffledOptions = shuffle(
-			question.options.map((opt, i) => ({ ...opt, originalIndex: i }))
-		);
-		selected = [];
-		// Focus first checkbox when question changes
-		if (optionsContainerRef) {
-			const firstCheckbox = optionsContainerRef.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
-			if (firstCheckbox) {
-				firstCheckbox.focus();
+		const currentQuestionId = question.question;
+		if (currentQuestionId !== lastQuestionId) {
+			lastQuestionId = currentQuestionId;
+			shuffledOptions = shuffle(
+				question.options.map((opt, i) => ({ ...opt, originalIndex: i }))
+			);
+			selected = [];
+			logger.state('MultipleChoiceView', 'Neue Frage geladen', {
+				questionPreview: question.question.slice(0, 50),
+				optionCount: question.options.length,
+				correctCount: question.options.filter(o => o.correct).length
+			});
+			// Focus first checkbox when question changes
+			if (optionsContainerRef) {
+				const firstCheckbox = optionsContainerRef.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+				if (firstCheckbox) {
+					firstCheckbox.focus();
+				}
 			}
 		}
 	});
@@ -38,11 +49,18 @@
 	function toggleOption(index: number) {
 		if (evaluated) return;
 		const idx = selected.indexOf(index);
+		const wasSelected = idx !== -1;
 		if (idx === -1) {
 			selected = [...selected, index];
 		} else {
 			selected = selected.filter((i) => i !== index);
 		}
+		logger.action('MultipleChoiceView', 'toggleOption', {
+			optionIndex: index + 1,
+			optionText: shuffledOptions[index]?.text.slice(0, 30),
+			action: wasSelected ? 'deselected' : 'selected',
+			selectedCount: selected.length
+		});
 	}
 
 	function handleSubmit() {
@@ -51,6 +69,11 @@
 			.map((opt, i) => (opt.correct ? i : -1))
 			.filter((i) => i !== -1);
 		const isCorrect = checkMultipleChoice(selected, correctIndices);
+		logger.action('MultipleChoiceView', 'handleSubmit', {
+			selectedIndices: selected.map(i => i + 1),
+			correctIndices: correctIndices.map(i => i + 1),
+			isCorrect
+		});
 		onSubmit(isCorrect);
 	}
 
@@ -60,11 +83,13 @@
 			const index = parseInt(event.key) - 1;
 			if (index < shuffledOptions.length) {
 				event.preventDefault();
+				logger.action('MultipleChoiceView', 'Keyboard: Zifferntaste', { key: event.key, optionIndex: index + 1 });
 				toggleOption(index);
 			}
 		}
 		if (event.key === 'Enter') {
 			event.preventDefault();
+			logger.action('MultipleChoiceView', 'Keyboard: Enter (Submit)');
 			handleSubmit();
 		}
 	}
@@ -77,6 +102,14 @@
 		if (wasSelected && !option.correct) return 'incorrect selected';
 		return '';
 	}
+
+	// Check if the overall answer is correct
+	let isOverallCorrect = $derived(() => {
+		const correctIndices = shuffledOptions
+			.map((opt, i) => (opt.correct ? i : -1))
+			.filter((i) => i !== -1);
+		return checkMultipleChoice(selected, correctIndices);
+	});
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -85,6 +118,16 @@
 	<div class="question">
 		{@html question.question}
 	</div>
+
+	{#if evaluated}
+		<div class="result-banner" class:correct={isOverallCorrect()} class:wrong={!isOverallCorrect()}>
+			{#if isOverallCorrect()}
+				✓ Richtig
+			{:else}
+				✗ Falsch
+			{/if}
+		</div>
+	{/if}
 
 	<div class="options" bind:this={optionsContainerRef}>
 		{#each shuffledOptions as option, i}
@@ -222,5 +265,25 @@
 		font-size: 0.85rem;
 		color: #666;
 		text-align: center;
+	}
+
+	.result-banner {
+		padding: 1rem;
+		border-radius: 0.5rem;
+		font-size: 1.25rem;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.result-banner.correct {
+		background-color: #e8f5e9;
+		color: var(--color-success);
+		border: 2px solid var(--color-success);
+	}
+
+	.result-banner.wrong {
+		background-color: #ffebee;
+		color: var(--color-error);
+		border: 2px solid var(--color-error);
 	}
 </style>

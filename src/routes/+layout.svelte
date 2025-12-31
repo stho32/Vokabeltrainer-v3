@@ -1,8 +1,11 @@
 <script lang="ts">
 	import '../app.css';
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
+	import { logger } from '$lib/utils/logger';
 
 	let { children } = $props();
+
+	logger.info('App', '=== Vokabeltrainer gestartet ===');
 </script>
 
 <svelte:head>

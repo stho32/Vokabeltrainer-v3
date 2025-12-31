@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { logger } from '$lib/utils/logger';
+
 	interface Props {
 		type: 'correct' | 'wrong' | null;
 	}
@@ -12,9 +14,11 @@
 		if (type) {
 			currentType = type;
 			visible = true;
+			logger.event('FlashOverlay', 'Flash angezeigt', { type });
 			// Hide after animation completes
 			const timer = setTimeout(() => {
 				visible = false;
+				logger.event('FlashOverlay', 'Flash ausgeblendet');
 			}, 500);
 			return () => clearTimeout(timer);
 		}

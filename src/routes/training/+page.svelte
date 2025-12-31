@@ -3,36 +3,46 @@
 	import { browser } from '$app/environment';
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
 	import { scoreStore } from '$lib/stores/scores.svelte';
+	import { logger } from '$lib/utils/logger';
 	import QuestionRenderer from '$lib/components/questions/QuestionRenderer.svelte';
 	import FlashOverlay from '$lib/components/FlashOverlay.svelte';
+
+	logger.info('TrainingPage', 'Seite geladen');
 
 	// Redirect to home if no active session
 	$effect(() => {
 		if (browser && !trainingSessionStore.isActive && !trainingSessionStore.isComplete) {
+			logger.event('TrainingPage', 'Redirect zu Home (keine aktive Session)');
 			goto('/');
 		}
 	});
 
 	function handleSubmit(isCorrect: boolean) {
+		logger.action('TrainingPage', 'handleSubmit', { isCorrect });
 		trainingSessionStore.evaluate(isCorrect);
 
 		// Auto-advance after 1s on correct answer
 		if (isCorrect) {
+			logger.event('TrainingPage', 'Auto-advance Timer gestartet (1s)');
 			setTimeout(() => {
+				logger.event('TrainingPage', 'Auto-advance ausgeführt');
 				trainingSessionStore.next();
 			}, 1000);
 		}
 	}
 
 	function handleReveal() {
+		logger.action('TrainingPage', 'Click: Antwort anzeigen');
 		trainingSessionStore.revealAnswer();
 	}
 
 	function handleNext() {
+		logger.action('TrainingPage', 'Click: Weiter');
 		trainingSessionStore.next();
 	}
 
 	function handleBackToSelection() {
+		logger.action('TrainingPage', 'Click: Zurück zur Auswahl');
 		trainingSessionStore.end();
 		goto('/');
 	}

@@ -5,7 +5,10 @@
 	import { trainingSessionStore } from '$lib/stores/training-session.svelte';
 	import { trainings, getTrainingsSorted, getSelectedTrainings } from '$lib/data/trainings';
 	import { hashQuestion } from '$lib/utils/hash';
+	import { logger } from '$lib/utils/logger';
 	import ScoreBadge from '$lib/components/ScoreBadge.svelte';
+
+	logger.info('HomePage', 'Seite geladen');
 
 	const sortedTrainings = getTrainingsSorted();
 
@@ -16,6 +19,7 @@
 	}
 
 	function toggleTraining(trainingId: string) {
+		logger.action('HomePage', 'Click: Training Toggle', { trainingId });
 		configStore.toggleTraining(trainingId);
 	}
 
@@ -59,7 +63,15 @@
 	}
 
 	function startTraining() {
-		if (!canStart()) return;
+		if (!canStart()) {
+			logger.action('HomePage', 'Click: Training starten (blockiert - keine Auswahl)');
+			return;
+		}
+		logger.action('HomePage', 'Click: Training starten', {
+			selectedTrainings: configStore.selectedTrainings,
+			questionCount: configStore.questionCount,
+			order: configStore.order
+		});
 		const selected = getSelectedTrainings(configStore.selectedTrainings);
 		trainingSessionStore.start(selected);
 		goto('/training');
@@ -108,7 +120,10 @@
 							name="questionCount"
 							value={count}
 							checked={configStore.questionCount === count}
-							onchange={() => configStore.setQuestionCount(count)}
+							onchange={() => {
+							logger.action('HomePage', 'Click: Anzahl geändert', { count });
+							configStore.setQuestionCount(count);
+						}}
 						/>
 						<span>{getCountLabel(count)}</span>
 					</label>
@@ -125,7 +140,10 @@
 						name="order"
 						value="sequential"
 						checked={configStore.order === 'sequential'}
-						onchange={() => configStore.setOrder('sequential')}
+						onchange={() => {
+							logger.action('HomePage', 'Click: Reihenfolge geändert', { order: 'sequential' });
+							configStore.setOrder('sequential');
+						}}
 					/>
 					<span>Reihenfolge</span>
 				</label>
@@ -135,7 +153,10 @@
 						name="order"
 						value="random"
 						checked={configStore.order === 'random'}
-						onchange={() => configStore.setOrder('random')}
+						onchange={() => {
+							logger.action('HomePage', 'Click: Reihenfolge geändert', { order: 'random' });
+							configStore.setOrder('random');
+						}}
 					/>
 					<span>Zufall</span>
 				</label>

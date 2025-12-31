@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { TextQuestion } from '$lib/types';
 	import { checkTextAnswer } from '$lib/utils/answer-check';
+	import { logger } from '$lib/utils/logger';
 
 	interface Props {
 		question: TextQuestion;
@@ -17,6 +18,10 @@
 	// Reset user answer and focus textarea when question changes
 	$effect(() => {
 		userAnswer = question.initialValue ?? '';
+		logger.state('TextQuestionView', 'Neue Frage geladen', {
+			questionPreview: question.question.slice(0, 50),
+			hasInitialValue: !!question.initialValue
+		});
 		// Focus textarea when question changes
 		if (textareaRef) {
 			textareaRef.focus();
@@ -26,6 +31,11 @@
 	function handleSubmit() {
 		if (evaluated) return;
 		const isCorrect = checkTextAnswer(userAnswer, question.answer);
+		logger.action('TextQuestionView', 'handleSubmit', {
+			userAnswerLength: userAnswer.length,
+			userAnswerPreview: userAnswer.slice(0, 30),
+			isCorrect
+		});
 		onSubmit(isCorrect);
 	}
 
@@ -33,6 +43,7 @@
 		// Tab inserts 4 spaces (R00007)
 		if (event.key === 'Tab' && textareaRef) {
 			event.preventDefault();
+			logger.action('TextQuestionView', 'Keyboard: Tab (4 Leerzeichen eingefügt)');
 			const start = textareaRef.selectionStart;
 			const end = textareaRef.selectionEnd;
 			userAnswer = userAnswer.substring(0, start) + '    ' + userAnswer.substring(end);
@@ -47,6 +58,7 @@
 		// Ctrl+Enter submits (R00007)
 		if (event.key === 'Enter' && event.ctrlKey) {
 			event.preventDefault();
+			logger.action('TextQuestionView', 'Keyboard: Ctrl+Enter (Submit)');
 			handleSubmit();
 		}
 	}
