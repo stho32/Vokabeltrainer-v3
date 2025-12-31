@@ -9,6 +9,7 @@ Initialize a complete Svelte 5 / SvelteKit project structure with requirements d
 
 This command sets up a new Svelte application from scratch or enhances an existing repository with the proper structure. It:
 - Creates the SvelteKit project structure if not present
+- Creates a proper `.gitignore` file for SvelteKit projects
 - Makes the svelte-app-architecture documentation available locally
 - Sets up a requirements tracking system in German ("Anforderungen")
 - Creates initial documentation
@@ -73,6 +74,45 @@ Use this command when starting a new Svelte project or when you need to add prop
    ```
    static/
    └── favicon.png (placeholder or skip)
+   ```
+
+4. **Create .gitignore file**
+   - Create a proper `.gitignore` for SvelteKit projects
+   - Include standard Node.js ignores (node_modules, etc.)
+   - Include SvelteKit-specific ignores (.svelte-kit, build output)
+   - Include IDE and OS-specific ignores (.vscode, .idea, .DS_Store)
+   - Example content:
+   ```
+   # Dependencies
+   node_modules/
+
+   # Build output
+   .svelte-kit/
+   build/
+   dist/
+
+   # Environment files
+   .env
+   .env.*
+   !.env.example
+
+   # IDE
+   .vscode/
+   .idea/
+   *.swp
+   *.swo
+
+   # OS
+   .DS_Store
+   Thumbs.db
+
+   # Logs
+   *.log
+   npm-debug.log*
+
+   # Package manager locks (keep one)
+   # pnpm-lock.yaml
+   # yarn.lock
    ```
 
 ### Phase 4: Setup Requirements Documentation
