@@ -13,17 +13,44 @@
 	let { question, revealed, evaluated, onSubmit }: Props = $props();
 
 	let userAnswer = $state('');
+	let submittedAnswer = $state<string | null>(null);
+	let wasCorrect = $state<boolean | null>(null);
 	let textareaRef: HTMLTextAreaElement | undefined = $state();
 
-	// Reset user answer and focus textarea when question changes
+	// Track question hash to detect question changes
+	let lastQuestionHash = $state('');
+	let wasEvaluated = $state(false);
+
+	// Reset user answer and focus textarea when question text changes
 	$effect(() => {
-		userAnswer = question.initialValue ?? '';
-		logger.state('TextQuestionView', 'Neue Frage geladen', {
-			questionPreview: question.question.slice(0, 50),
-			hasInitialValue: !!question.initialValue
-		});
-		// Focus textarea when question changes
-		if (textareaRef) {
+		const currentHash = question.question;
+		if (currentHash !== lastQuestionHash) {
+			lastQuestionHash = currentHash;
+			userAnswer = question.initialValue ?? '';
+			submittedAnswer = null;
+			wasCorrect = null;
+			logger.state('TextQuestionView', 'Neue Frage geladen', {
+				questionPreview: question.question.slice(0, 50),
+				hasInitialValue: !!question.initialValue
+			});
+		}
+	});
+
+	// Reset when transitioning from evaluated to not evaluated (new question round)
+	$effect(() => {
+		if (wasEvaluated && !evaluated) {
+			// Transition from evaluated to not evaluated means new question round
+			userAnswer = question.initialValue ?? '';
+			submittedAnswer = null;
+			wasCorrect = null;
+			logger.state('TextQuestionView', 'Frage zurückgesetzt (Wiederholung)', {
+				questionPreview: question.question.slice(0, 50)
+			});
+		}
+		wasEvaluated = evaluated;
+
+		// Focus textarea when question is ready for answering
+		if (!evaluated && textareaRef) {
 			textareaRef.focus();
 		}
 	});
@@ -31,6 +58,8 @@
 	function handleSubmit() {
 		if (evaluated) return;
 		const isCorrect = checkTextAnswer(userAnswer, question.answer);
+		submittedAnswer = userAnswer;
+		wasCorrect = isCorrect;
 		logger.action('TextQuestionView', 'handleSubmit', {
 			userAnswerLength: userAnswer.length,
 			userAnswerPreview: userAnswer.slice(0, 30),
@@ -69,6 +98,18 @@
 		}
 		return question.answer;
 	}
+
+	// Listen for external submit trigger (from "Antworten!" button)
+	function handleTriggerSubmit() {
+		if (!evaluated) {
+			handleSubmit();
+		}
+	}
+
+	$effect(() => {
+		window.addEventListener('trigger-submit', handleTriggerSubmit);
+		return () => window.removeEventListener('trigger-submit', handleTriggerSubmit);
+	});
 </script>
 
 <div class="text-question">
@@ -85,6 +126,18 @@
 		placeholder="Deine Antwort..."
 		class="answer-input"
 	></textarea>
+
+	{#if evaluated && submittedAnswer !== null}
+		<div class="user-answer" class:correct={wasCorrect} class:wrong={!wasCorrect}>
+			<strong>Deine Antwort:</strong>
+			{submittedAnswer || '(keine Antwort)'}
+			{#if wasCorrect}
+				<span class="result-badge correct">✓ Richtig</span>
+			{:else}
+				<span class="result-badge wrong">✗ Falsch</span>
+			{/if}
+		</div>
+	{/if}
 
 	{#if revealed || evaluated}
 		<div class="correct-answer">
@@ -125,6 +178,43 @@
 	.answer-input:disabled {
 		background-color: #f5f5f5;
 		cursor: not-allowed;
+	}
+
+	.user-answer {
+		padding: 1rem;
+		border-radius: 0.25rem;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.user-answer.correct {
+		background-color: #e8f5e9;
+		border-left: 4px solid var(--color-success);
+	}
+
+	.user-answer.wrong {
+		background-color: #ffebee;
+		border-left: 4px solid var(--color-error);
+	}
+
+	.result-badge {
+		font-size: 0.875rem;
+		font-weight: 600;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0.25rem;
+		margin-left: auto;
+	}
+
+	.result-badge.correct {
+		color: var(--color-success);
+		background-color: rgba(40, 167, 69, 0.1);
+	}
+
+	.result-badge.wrong {
+		color: var(--color-error);
+		background-color: rgba(220, 53, 69, 0.1);
 	}
 
 	.correct-answer {

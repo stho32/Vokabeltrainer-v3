@@ -21,8 +21,9 @@
 	let selected = $state<number[]>([]);
 	let optionsContainerRef: HTMLDivElement | undefined = $state();
 	let lastQuestionId = $state('');
+	let wasEvaluated = $state(false);
 
-	// Shuffle options and reset selection only when question actually changes
+	// Shuffle options when question text changes
 	$effect(() => {
 		const currentQuestionId = question.question;
 		if (currentQuestionId !== lastQuestionId) {
@@ -31,17 +32,33 @@
 				question.options.map((opt, i) => ({ ...opt, originalIndex: i }))
 			);
 			selected = [];
-			logger.state('MultipleChoiceView', 'Neue Frage geladen', {
+			logger.state('MultipleChoiceView', 'Neue Frage geladen (neuer Text)', {
 				questionPreview: question.question.slice(0, 50),
 				optionCount: question.options.length,
 				correctCount: question.options.filter(o => o.correct).length
 			});
-			// Focus first checkbox when question changes
-			if (optionsContainerRef) {
-				const firstCheckbox = optionsContainerRef.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
-				if (firstCheckbox) {
-					firstCheckbox.focus();
-				}
+		}
+	});
+
+	// Reset selection when transitioning from evaluated to not evaluated (new question round)
+	$effect(() => {
+		if (wasEvaluated && !evaluated) {
+			// Transition from evaluated to not evaluated means new question round
+			selected = [];
+			shuffledOptions = shuffle(
+				question.options.map((opt, i) => ({ ...opt, originalIndex: i }))
+			);
+			logger.state('MultipleChoiceView', 'Frage zurückgesetzt (Wiederholung)', {
+				questionPreview: question.question.slice(0, 50)
+			});
+		}
+		wasEvaluated = evaluated;
+
+		// Focus first checkbox when question is ready for answering
+		if (!evaluated && optionsContainerRef) {
+			const firstCheckbox = optionsContainerRef.querySelector('input[type="checkbox"]') as HTMLInputElement | null;
+			if (firstCheckbox) {
+				firstCheckbox.focus();
 			}
 		}
 	});
@@ -93,6 +110,18 @@
 			handleSubmit();
 		}
 	}
+
+	// Listen for external submit trigger (from "Antworten!" button)
+	function handleTriggerSubmit() {
+		if (!evaluated) {
+			handleSubmit();
+		}
+	}
+
+	$effect(() => {
+		window.addEventListener('trigger-submit', handleTriggerSubmit);
+		return () => window.removeEventListener('trigger-submit', handleTriggerSubmit);
+	});
 
 	function getOptionClass(option: ShuffledOption, index: number): string {
 		if (!evaluated) return '';

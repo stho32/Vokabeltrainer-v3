@@ -51,6 +51,12 @@
 		return scoreStore.getScore(trainingSessionStore.currentHash);
 	}
 
+	// Trigger submit event for question components
+	function triggerSubmit() {
+		logger.action('TrainingPage', 'Click: Antworten!');
+		window.dispatchEvent(new CustomEvent('trigger-submit'));
+	}
+
 	// Keyboard handler for Ctrl+Enter to submit
 	function handleKeydown(event: KeyboardEvent) {
 		// Ctrl+Enter is handled by question components for text
@@ -105,7 +111,7 @@
 				<button class="reveal-button" onclick={handleReveal} disabled={trainingSessionStore.isRevealed}>
 					Antwort anzeigen
 				</button>
-				<button class="submit-button" onclick={() => handleSubmit(false)}>
+				<button class="submit-button" onclick={triggerSubmit}>
 					Antworten!
 				</button>
 			{:else if trainingSessionStore.lastResult === 'wrong'}
