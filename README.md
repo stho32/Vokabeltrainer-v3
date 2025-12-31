@@ -1,5 +1,7 @@
 # Vokabeltrainer
 
+**🚀 [Live Demo: https://stho32.github.io/Vokabeltrainer-v3/](https://stho32.github.io/Vokabeltrainer-v3/)**
+
 Webbasierte Lernplattform für Vokabeln und Wissensfragen mit Spaced Repetition.
 
 ## Tech Stack
