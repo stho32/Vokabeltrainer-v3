@@ -19,28 +19,68 @@ export const needsMap: Training = {
 		},
 		{
 			type: 'multiple-choice',
-			question: 'Welche sind die <strong>sechs primaeren Needs</strong> im NCI-System?',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
 			options: [
 				{ text: 'Significance', correct: true, explanation: 'Bedeutsamkeits-Beduerfnis' },
 				{ text: 'Pity', correct: true, explanation: 'Mitleids-Beduerfnis' },
-				{ text: 'Acceptance', correct: true, explanation: 'Akzeptanz-Beduerfnis' },
-				{ text: 'Happiness', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+				{ text: 'Happiness', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Love', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
 			]
 		},
 		{
 			type: 'multiple-choice',
-			question: 'Welche gehoeren zu den <strong>sechs primaeren Needs</strong>?',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: 'Akzeptanz-Beduerfnis' },
+				{ text: 'Approval', correct: true, explanation: 'Bestaetigungs-Beduerfnis' },
+				{ text: 'Trust', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Security', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: 'Intelligenz-Beduerfnis' },
+				{ text: 'Strength', correct: true, explanation: 'Staerke-Beduerfnis' },
+				{ text: 'Power', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Freedom', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
+			options: [
+				{ text: 'Significance', correct: true, explanation: 'Bedeutsamkeits-Beduerfnis' },
+				{ text: 'Acceptance', correct: true, explanation: 'Akzeptanz-Beduerfnis' },
+				{ text: 'Respect', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Comfort', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
+			options: [
+				{ text: 'Pity', correct: true, explanation: 'Mitleids-Beduerfnis' },
+				{ text: 'Strength', correct: true, explanation: 'Staerke-Beduerfnis' },
+				{ text: 'Courage', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Loyalty', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche der folgenden Optionen gehoeren zu den <strong>sechs primaeren Needs</strong> im NCI-System?',
 			options: [
 				{ text: 'Approval', correct: true, explanation: 'Bestaetigungs-Beduerfnis' },
 				{ text: 'Intelligence', correct: true, explanation: 'Intelligenz-Beduerfnis' },
-				{ text: 'Strength', correct: true, explanation: 'Staerke-Beduerfnis' },
-				{ text: 'Love', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
+				{ text: 'Wisdom', correct: false, explanation: 'Kein primaeres Need im NCI-System' },
+				{ text: 'Success', correct: false, explanation: 'Kein primaeres Need im NCI-System' }
 			]
 		},
 		{
 			type: 'text',
 			question: 'Woraus entstehen Needs laut NCI?',
-			answer: ['kindheitsdefizit', 'emotionale mangelernaehrung', 'emotionale mangelernährung']
+			answer: ['kindheitsdefizit', 'kindheitsdefizite', 'emotionale mangelernaehrung', 'emotionale mangelernährung']
 		},
 		{
 			type: 'multiple-choice',
@@ -848,7 +888,8 @@ export const needsMap: Training = {
 			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Kernkonzept der Needs:',
 			text: 'Needs sind das, was eine Person in der Kindheit nicht bekommen hat und nun staendig zu erreichen versucht. Die Person will die Geschichte zu Ende bringen - aber die Geschichte endet nie.',
 			// Kindheit(8), bekommen(10), staendig(14), Geschichte(22), endet(30)
-			hiddenWords: [8, 10, 14, 22, 30]
+			hiddenWords: [8, 10, 14, 22, 30],
+			distractors: ['Jugend', 'verloren', 'selten', 'Erzaehlung', 'beginnt']
 		},
 		{
 			type: 'dice-text',
@@ -856,28 +897,32 @@ export const needsMap: Training = {
 				'Ergaenze die <strong>fehlenden Begriffe</strong> zur emotionalen Mangelernaehrung:',
 			text: 'Needs sind das Ergebnis eines emotionalen Defizits - einer Art emotionalen Mangelernaehrung in der Kindheit. Die Befriedigung ist temporaer.',
 			// emotionalen(5), Mangelernaehrung(11), Befriedigung(16), temporaer(18)
-			hiddenWords: [5, 11, 16, 18]
+			hiddenWords: [5, 11, 16, 18],
+			distractors: ['rationalen', 'Ueberversorgung', 'Belohnung', 'permanent']
 		},
 		{
 			type: 'dice-text',
 			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Pity Need:',
 			text: 'Die groesste Angst bei Menschen mit Pity Need ist, dass andere ihnen nicht glauben. Die eleganteste Strategie ist Compliment plus Redirect.',
 			// Angst(2), glauben(13), Strategie(16), Compliment(18), Redirect(20)
-			hiddenWords: [2, 13, 16, 18, 20]
+			hiddenWords: [2, 13, 16, 18, 20],
+			distractors: ['Hoffnung', 'vertrauen', 'Taktik', 'Kritik', 'Ablenkung']
 		},
 		{
 			type: 'dice-text',
 			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Strength Need:',
 			text: 'Menschen mit Strength Need suchen nach Respekt. Ihre Wertehierarchie: Kontrolle ueber Chaos, Respekt ueber Liebe, Unabhaengigkeit ueber Verbindung.',
 			// Respekt(6), Kontrolle(9), Chaos(11), Liebe(14), Unabhaengigkeit(15)
-			hiddenWords: [6, 9, 11, 14, 15]
+			hiddenWords: [6, 9, 11, 14, 15],
+			distractors: ['Macht', 'Ordnung', 'Frieden', 'Zuneigung', 'Abhaengigkeit']
 		},
 		{
 			type: 'dice-text',
 			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zur Acceptance Kommunikation:',
 			text: 'Bei Menschen mit Acceptance Need funktioniert Wir-Sprache am besten. Statt Du koenntest sagt man besser Wir koennten zusammen.',
 			// Wir-Sprache(6), koenntest(11), Wir(15), koennten(16)
-			hiddenWords: [6, 11, 15, 16]
+			hiddenWords: [6, 11, 15, 16],
+			distractors: ['Ich-Sprache', 'solltest', 'Du', 'muessten']
 		}
 	]
 };

@@ -24,6 +24,7 @@ export interface DiceTextQuestion {
 	question: string;
 	text: string;
 	hiddenWords: number[];
+	distractors?: string[];
 }
 
 export interface WordSearchQuestion {
