@@ -117,6 +117,13 @@
 		if (!evaluated || submittedAnswers === null) return '';
 		return checkWord(hiddenIndex) ? 'correct' : 'wrong';
 	}
+
+	// Calculate input width based on user input length (minimum 3 chars)
+	function getInputWidth(hiddenIndex: number): string {
+		const userLength = userAnswers[hiddenIndex]?.length || 0;
+		const charCount = Math.max(userLength, 3);
+		return `${charCount * 0.7 + 1.5}em`;
+	}
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -138,7 +145,7 @@
 						onkeydown={handleKeydown}
 						disabled={evaluated}
 						class="word-input {getInputClass(hiddenIndex)}"
-						style="width: {Math.max(word.length * 0.7, 3)}em;"
+						style="width: {getInputWidth(hiddenIndex)};"
 						placeholder="..."
 					/>
 					{#if evaluated && submittedAnswers !== null && !checkWord(hiddenIndex)}

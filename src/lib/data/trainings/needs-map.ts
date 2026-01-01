@@ -637,6 +637,247 @@ export const needsMap: Training = {
 				{ text: 'Approval', correct: false, explanation: 'Approval = Empathie' },
 				{ text: 'Intelligence', correct: false, explanation: 'Intelligence = Verstehen' }
 			]
+		},
+
+		// === True/False Fragen ===
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Needs sind das Ergebnis einer emotionalen Mangelernaehrung in der Kindheit.',
+			correct: true,
+			explanation:
+				'Needs entstehen aus einem emotionalen Defizit - einer Art "emotionalen Mangelernaehrung" in der Kindheit.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Ein einmal befriedigtes Need bleibt dauerhaft erfuellt.',
+			correct: false,
+			explanation:
+				'Falsch - die Befriedigung ist temporaer. Das Need kann kurzzeitig erfuellt werden, kehrt aber immer zurueck.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Das Intelligence Need steht in direkter Verbindung zum Imposter Syndrome.',
+			correct: true,
+			explanation:
+				'Je staerker das Intelligence Need, desto groesser oft die Angst, als "nicht wirklich intelligent" entlarvt zu werden.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Menschen mit Strength Need bevorzugen Liebe ueber Respekt.',
+			correct: false,
+			explanation:
+				'Falsch - fuer Menschen mit Strength Need gilt: Respekt > Liebe. Respekt ist wichtiger als Zuneigung.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Die groesste Angst bei Menschen mit Pity Need ist, dass andere ihnen nicht glauben.',
+			correct: true,
+			explanation:
+				'Diese Angst fuehrt zu wiederholtem Erzaehlen von Leidensgeschichten und Eskalation der Darstellung.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Beim Approval Need reichen allgemeine Komplimente wie "Tolle Arbeit!" aus.',
+			correct: false,
+			explanation:
+				'Falsch - Menschen mit Approval Need brauchen spezifische Bestaetigung. Vages Lob ist unwirksam.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Needs Compliments sollten wie Gewuerz sparsam und gezielt eingesetzt werden.',
+			correct: true,
+			explanation:
+				'Zu haeufig: Die Person wird abgestumpft. Zu selten: Keine Verbindung. Die richtige Balance ist entscheidend.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement:
+				'Menschen mit Acceptance Need wollen aus der Masse herausragen.',
+			correct: false,
+			explanation:
+				'Falsch - Acceptance-orientierte Menschen fanden Sicherheit darin, nicht aufzufallen. Herausragen ist eher Significance Need.'
+		},
+
+		// === Matching Fragen ===
+		{
+			type: 'matching',
+			question: 'Ordne die <strong>Needs</strong> ihren <strong>Ancestral Superpowers</strong> zu:',
+			pairs: [
+				{ left: 'Approval', right: 'Empathie' },
+				{ left: 'Acceptance', right: 'Stammverteidigung' },
+				{ left: 'Intelligence', right: 'Verstehen/Erklaeren' },
+				{ left: 'Strength', right: 'Furchtlosigkeit' },
+				{ left: 'Significance', right: 'Unabhaengigkeit' }
+			]
+		},
+		{
+			type: 'matching',
+			question: 'Ordne die <strong>Needs</strong> ihren <strong>Needs Compliments</strong> zu:',
+			pairs: [
+				{ left: 'Strength', right: 'Du hast das durchgezogen, obwohl es schwer war.' },
+				{ left: 'Intelligence', right: 'Das ist ein interessanter Gedanke.' },
+				{ left: 'Acceptance', right: 'Es ist angenehm, mit dir zusammen zu sein.' },
+				{ left: 'Approval', right: 'Du machst das genau richtig.' },
+				{ left: 'Significance', right: 'Dein Beitrag hat einen Unterschied gemacht.' }
+			]
+		},
+		{
+			type: 'matching',
+			question: 'Ordne die <strong>Needs</strong> ihrer <strong>zentralen Frage</strong> zu:',
+			pairs: [
+				{ left: 'Approval', right: 'Mache ich es richtig?' },
+				{ left: 'Acceptance', right: 'Gehoere ich dazu?' },
+				{ left: 'Intelligence', right: 'Bin ich klug?' },
+				{ left: 'Significance', right: 'Bin ich wichtig?' }
+			]
+		},
+		{
+			type: 'matching',
+			question:
+				'Ordne die <strong>Wertehierarchie</strong> dem <strong>Strength Need</strong> zu:',
+			pairs: [
+				{ left: 'Kontrolle', right: '> Chaos' },
+				{ left: 'Respekt', right: '> Liebe' },
+				{ left: 'Unabhaengigkeit', right: '> Verbindung' },
+				{ left: 'Klarheit', right: '> Ambiguitaet' }
+			]
+		},
+
+		// === Categorization Fragen ===
+		{
+			type: 'categorization',
+			question:
+				'Ordne die <strong>Verhaltensweisen</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Significance Need',
+					items: [
+						'Spricht ueber eigene Erfolge',
+						'Uebernimmt gerne Fuehrungsrollen',
+						'Will aus der Masse herausragen'
+					]
+				},
+				{
+					name: 'Acceptance Need',
+					items: [
+						'Vermeidet es, anzuecken',
+						'Passt sich schnell an Gruppenerwartungen an',
+						'Opfert eigene Beduerfnisse fuer Gruppenharmonie'
+					]
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question:
+				'Ordne die <strong>Kommunikationsmerkmale</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Intelligence Need',
+					items: [
+						'Strukturiert und logisch',
+						'Mit viel Detail',
+						'Korrigiert gerne Fehler bei anderen'
+					]
+				},
+				{
+					name: 'Strength Need',
+					items: [
+						'Kurze, klare Aussagen',
+						'Handlungsorientierte Sprache',
+						'Vermeidet emotionale Ausdruecke'
+					]
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question:
+				'Ordne die <strong>Komplimente</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Approval Need',
+					items: [
+						'Die Art, wie du das organisiert hast, ist genau richtig.',
+						'Deine Vorgehensweise war sehr klug.',
+						'So wie du das formuliert hast, ist es perfekt.'
+					]
+				},
+				{
+					name: 'Pity Need',
+					items: [
+						'Das klingt wirklich schwierig.',
+						'Ich kann verstehen, wie schwer das sein muss.',
+						'Mann, ich fuehle mit dir.'
+					]
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Saeulen</strong> dem <strong>Significance Need</strong> zu:',
+			categories: [
+				{
+					name: 'Significance Need',
+					items: ['Impact (Wirkung)', 'Achievement (Leistung)', 'Exceptionality (Aussergewoehnlichkeit)']
+				},
+				{
+					name: 'Nicht Significance',
+					items: ['Conformity (Konformitaet)', 'Zugehoerigkeit', 'Spezifische Bestaetigung']
+				}
+			]
+		},
+
+		// === DiceText Fragen ===
+		{
+			type: 'dice-text',
+			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Kernkonzept der Needs:',
+			text: 'Needs sind das, was eine Person in der Kindheit nicht bekommen hat und nun staendig zu erreichen versucht. Die Person will die Geschichte zu Ende bringen - aber die Geschichte endet nie.',
+			// Kindheit(8), bekommen(10), staendig(14), Geschichte(22), endet(30)
+			hiddenWords: [8, 10, 14, 22, 30]
+		},
+		{
+			type: 'dice-text',
+			question:
+				'Ergaenze die <strong>fehlenden Begriffe</strong> zur emotionalen Mangelernaehrung:',
+			text: 'Needs sind das Ergebnis eines emotionalen Defizits - einer Art emotionalen Mangelernaehrung in der Kindheit. Die Befriedigung ist temporaer.',
+			// emotionalen(5), Mangelernaehrung(11), Befriedigung(16), temporaer(18)
+			hiddenWords: [5, 11, 16, 18]
+		},
+		{
+			type: 'dice-text',
+			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Pity Need:',
+			text: 'Die groesste Angst bei Menschen mit Pity Need ist, dass andere ihnen nicht glauben. Die eleganteste Strategie ist Compliment plus Redirect.',
+			// Angst(2), glauben(13), Strategie(16), Compliment(18), Redirect(20)
+			hiddenWords: [2, 13, 16, 18, 20]
+		},
+		{
+			type: 'dice-text',
+			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zum Strength Need:',
+			text: 'Menschen mit Strength Need suchen nach Respekt. Ihre Wertehierarchie: Kontrolle ueber Chaos, Respekt ueber Liebe, Unabhaengigkeit ueber Verbindung.',
+			// Respekt(6), Kontrolle(9), Chaos(11), Liebe(14), Unabhaengigkeit(15)
+			hiddenWords: [6, 9, 11, 14, 15]
+		},
+		{
+			type: 'dice-text',
+			question: 'Ergaenze die <strong>fehlenden Begriffe</strong> zur Acceptance Kommunikation:',
+			text: 'Bei Menschen mit Acceptance Need funktioniert Wir-Sprache am besten. Statt Du koenntest sagt man besser Wir koennten zusammen.',
+			// Wir-Sprache(6), koenntest(11), Wir(15), koennten(16)
+			hiddenWords: [6, 11, 15, 16]
 		}
 	]
 };
