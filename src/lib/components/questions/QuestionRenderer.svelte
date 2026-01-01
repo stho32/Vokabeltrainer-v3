@@ -3,6 +3,11 @@
 	import { logger } from '$lib/utils/logger';
 	import TextQuestionView from './TextQuestionView.svelte';
 	import MultipleChoiceView from './MultipleChoiceView.svelte';
+	import TrueFalseView from './TrueFalseView.svelte';
+	import DiceTextView from './DiceTextView.svelte';
+	import MatchingView from './MatchingView.svelte';
+	import CategorizationView from './CategorizationView.svelte';
+	import WordSearchView from './WordSearchView.svelte';
 
 	interface Props {
 		question: Question;
@@ -27,27 +32,21 @@
 		<TextQuestionView {question} {revealed} {evaluated} {onSubmit} />
 	{:else if question.type === 'multiple-choice'}
 		<MultipleChoiceView {question} {revealed} {evaluated} {onSubmit} />
+	{:else if question.type === 'true-false'}
+		<TrueFalseView {question} {revealed} {evaluated} {onSubmit} />
 	{:else if question.type === 'dice-text'}
-		<div class="unsupported">
-			<p>Würfeltext-Fragen werden noch nicht unterstützt.</p>
-		</div>
+		<DiceTextView {question} {revealed} {evaluated} {onSubmit} />
+	{:else if question.type === 'matching'}
+		<MatchingView {question} {revealed} {evaluated} {onSubmit} />
+	{:else if question.type === 'categorization'}
+		<CategorizationView {question} {revealed} {evaluated} {onSubmit} />
 	{:else if question.type === 'word-search'}
-		<div class="unsupported">
-			<p>Wortsuchrätsel werden noch nicht unterstützt.</p>
-		</div>
+		<WordSearchView {question} {revealed} {evaluated} {onSubmit} />
 	{/if}
 </div>
 
 <style>
 	.question-renderer {
 		width: 100%;
-	}
-
-	.unsupported {
-		padding: 2rem;
-		text-align: center;
-		background-color: #fff3e0;
-		border: 2px solid var(--color-warning);
-		border-radius: 0.5rem;
 	}
 </style>

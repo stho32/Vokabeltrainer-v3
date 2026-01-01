@@ -33,7 +33,40 @@ export interface WordSearchQuestion {
 	answer: string;
 }
 
-export type Question = TextQuestion | MultipleChoiceQuestion | DiceTextQuestion | WordSearchQuestion;
+export interface TrueFalseQuestion {
+	type: 'true-false';
+	question: string;
+	statement: string;
+	correct: boolean;
+	explanation?: string;
+}
+
+export interface MatchingQuestion {
+	type: 'matching';
+	question: string;
+	pairs: Array<{
+		left: string;
+		right: string;
+	}>;
+}
+
+export interface CategorizationQuestion {
+	type: 'categorization';
+	question: string;
+	categories: Array<{
+		name: string;
+		items: string[];
+	}>;
+}
+
+export type Question =
+	| TextQuestion
+	| MultipleChoiceQuestion
+	| DiceTextQuestion
+	| WordSearchQuestion
+	| TrueFalseQuestion
+	| MatchingQuestion
+	| CategorizationQuestion;
 
 export interface Training {
 	id: string;

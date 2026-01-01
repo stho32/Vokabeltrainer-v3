@@ -36,6 +36,12 @@
 				Würfeltext
 			{:else if question.type === 'word-search'}
 				Wortsuchrätsel
+			{:else if question.type === 'true-false'}
+				Wahr/Falsch
+			{:else if question.type === 'matching'}
+				Zuordnung
+			{:else if question.type === 'categorization'}
+				Kategorisierung
 			{/if}
 		</span>
 	</header>
@@ -76,6 +82,42 @@
 			<div class="answer-section">
 				<span class="answer-label">Antwort:</span>
 				<span class="answer-value">{question.answer}</span>
+			</div>
+		{:else if question.type === 'true-false'}
+			<p class="question-text">{question.question}</p>
+			<div class="statement-section">
+				<span class="statement-text">{question.statement}</span>
+			</div>
+			<div class="answer-section">
+				<span class="answer-label">Antwort:</span>
+				<span class="answer-value">{question.correct ? 'Wahr' : 'Falsch'}</span>
+			</div>
+			{#if question.explanation}
+				<div class="explanation-section">
+					<span class="explanation-label">Erklärung:</span>
+					<span class="explanation-text">{question.explanation}</span>
+				</div>
+			{/if}
+		{:else if question.type === 'matching'}
+			<p class="question-text">{question.question}</p>
+			<div class="pairs-list">
+				{#each question.pairs as pair, i}
+					<div class="pair-item">
+						<span class="pair-left">{pair.left}</span>
+						<span class="pair-arrow">→</span>
+						<span class="pair-right">{pair.right}</span>
+					</div>
+				{/each}
+			</div>
+		{:else if question.type === 'categorization'}
+			<p class="question-text">{question.question}</p>
+			<div class="categories-list">
+				{#each question.categories as category}
+					<div class="category-item">
+						<span class="category-name">{category.name}:</span>
+						<span class="category-items">{category.items.join(', ')}</span>
+					</div>
+				{/each}
 			</div>
 		{/if}
 	</div>
@@ -230,5 +272,85 @@
 		padding: 0.125rem 0.375rem;
 		border-radius: 0.25rem;
 		font-weight: 500;
+	}
+
+	.statement-section {
+		padding: 0.75rem;
+		background: #f8f9fa;
+		border-left: 3px solid var(--color-primary);
+		border-radius: 0.25rem;
+		margin-bottom: 0.75rem;
+		font-style: italic;
+	}
+
+	.explanation-section {
+		margin-top: 0.5rem;
+		padding: 0.5rem;
+		background: #fff3e0;
+		border-left: 3px solid #ff9800;
+		border-radius: 0.25rem;
+	}
+
+	.explanation-label {
+		font-weight: 500;
+		color: #666;
+		margin-right: 0.5rem;
+	}
+
+	.explanation-text {
+		color: #555;
+	}
+
+	.pairs-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.pair-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem;
+		background: #f0f7f0;
+		border-radius: 0.25rem;
+		border-left: 3px solid var(--color-success);
+	}
+
+	.pair-left {
+		font-weight: 500;
+	}
+
+	.pair-arrow {
+		color: var(--color-success);
+		font-weight: bold;
+	}
+
+	.pair-right {
+		color: var(--color-success);
+		font-weight: 500;
+	}
+
+	.categories-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.category-item {
+		padding: 0.5rem;
+		background: #f0f7f0;
+		border-radius: 0.25rem;
+		border-left: 3px solid var(--color-success);
+	}
+
+	.category-name {
+		font-weight: 600;
+		color: var(--color-success);
+		margin-right: 0.5rem;
+	}
+
+	.category-items {
+		color: #333;
 	}
 </style>
