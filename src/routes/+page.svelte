@@ -8,8 +8,23 @@
 	import { hashQuestion } from '$lib/utils/hash';
 	import { logger } from '$lib/utils/logger';
 	import ScoreBadge from '$lib/components/ScoreBadge.svelte';
+	import TrainingBrowseModal from '$lib/components/TrainingBrowseModal.svelte';
+	import type { Training } from '$lib/types';
 
 	logger.info('HomePage', 'Seite geladen');
+
+	let browseTraining = $state<Training | null>(null);
+
+	function openBrowse(event: MouseEvent, training: Training) {
+		event.preventDefault();
+		event.stopPropagation();
+		logger.action('HomePage', 'Click: Training Browse', { trainingId: training.id });
+		browseTraining = training;
+	}
+
+	function closeBrowse() {
+		browseTraining = null;
+	}
 
 	const sortedTrainings = getTrainingsSorted();
 
@@ -103,6 +118,17 @@
 						<span class="training-meta">
 							<span class="question-count">{getQuestionCount(training.id)} Fragen</span>
 							<ScoreBadge percentage={getTrainingScore(training.id)} />
+							<button
+								class="browse-button"
+								onclick={(e) => openBrowse(e, training)}
+								title="Training durchstöbern"
+								aria-label="Training durchstöbern"
+							>
+								<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+									<circle cx="12" cy="12" r="3"/>
+								</svg>
+							</button>
 						</span>
 					</span>
 				</label>
@@ -169,6 +195,10 @@
 		Training starten
 	</button>
 </main>
+
+{#if browseTraining}
+	<TrainingBrowseModal training={browseTraining} onClose={closeBrowse} />
+{/if}
 
 <style>
 	main {
@@ -258,6 +288,27 @@
 
 	.question-count {
 		color: #666;
+	}
+
+	.browse-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.75rem;
+		height: 1.75rem;
+		padding: 0;
+		background: none;
+		border: 1px solid var(--color-border);
+		border-radius: 0.25rem;
+		cursor: pointer;
+		color: #666;
+		transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+	}
+
+	.browse-button:hover {
+		border-color: var(--color-primary);
+		color: var(--color-primary);
+		background-color: #f0f7ff;
 	}
 
 	.config-section {
