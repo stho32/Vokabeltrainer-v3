@@ -1221,6 +1221,517 @@ export const needsMap: Training = {
 				{ text: 'Significance', correct: false, explanation: 'Significance wuerde Erfolge trotz Schwierigkeiten betonen' },
 				{ text: 'Approval', correct: false, explanation: 'Approval sucht Bestaetigung fuer Richtigkeit, nicht Mitgefuehl' }
 			]
+		},
+
+		// === Hidden Fears ===
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Significance Need</strong>?',
+			options: [
+				{ text: 'Feeling small (Sich klein fuehlen)', correct: true, explanation: 'Die Angst, unbedeutend zu sein - das Gegenteil von Bedeutsamkeit' },
+				{ text: 'Being ignored (Ignoriert werden)', correct: true, explanation: 'Die Angst, nicht wahrgenommen zu werden' },
+				{ text: 'Dismissal (Abweisung)', correct: false, explanation: 'Das ist eine Hidden Fear des Approval Needs' },
+				{ text: 'Peer mismatch (Nicht zur Gruppe passen)', correct: false, explanation: 'Das ist eine Hidden Fear des Acceptance Needs' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Approval Need</strong>?',
+			options: [
+				{ text: 'Disapproval (Missbilligung)', correct: true, explanation: 'Die Angst vor negativem Feedback' },
+				{ text: 'Contempt (Verachtung)', correct: true, explanation: 'Die Angst, verachtet zu werden' },
+				{ text: 'Being "punked" (Ueberrumpelt werden)', correct: false, explanation: 'Das ist eine Hidden Fear des Strength Needs' },
+				{ text: 'Being seen as dumb (Als dumm angesehen werden)', correct: false, explanation: 'Das ist eine Hidden Fear des Intelligence Needs' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Acceptance Need</strong>?',
+			options: [
+				{ text: 'Social criticism (Soziale Kritik)', correct: true, explanation: 'Die Angst, von der Gruppe kritisiert zu werden' },
+				{ text: 'Gossip (Klatsch)', correct: true, explanation: 'Die Angst, dass hinter dem Ruecken ueber einen geredet wird' },
+				{ text: 'Abandonment (Verlassenwerden)', correct: false, explanation: 'Das ist eine Hidden Fear des Significance Needs' },
+				{ text: 'Being questioned (Hinterfragt werden)', correct: false, explanation: 'Das ist eine Hidden Fear des Intelligence Needs' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Intelligence Need</strong>?',
+			options: [
+				{ text: 'Being seen as dumb (Als dumm angesehen werden)', correct: true, explanation: 'Die Angst, nicht intelligent zu wirken' },
+				{ text: 'Being "called out" (Blosgestellt werden)', correct: true, explanation: 'Die Angst, oeffentlich korrigiert zu werden' },
+				{ text: 'Disrespected (Respektlos behandelt werden)', correct: false, explanation: 'Das ist eine Hidden Fear des Strength Needs' },
+				{ text: 'Being disbelieved (Nicht geglaubt werden)', correct: false, explanation: 'Das ist die zentrale Hidden Fear des Pity Needs' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Strength Need</strong>?',
+			options: [
+				{ text: 'Being "punked" (Ueberrumpelt werden)', correct: true, explanation: 'Die Angst, oeffentlich blamiert oder hereingelegt zu werden' },
+				{ text: 'Challenged (Herausgefordert werden)', correct: true, explanation: 'Die Angst vor Konfrontationen, die die eigene Dominanz bedrohen' },
+				{ text: 'Feeling left out (Ausgeschlossen fuehlen)', correct: false, explanation: 'Das ist eine Hidden Fear des Approval Needs' },
+				{ text: 'Social ridicule (Soziale Laecherlichkeit)', correct: false, explanation: 'Das ist eine Hidden Fear des Significance Needs' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>Hidden Fears</strong> gehoeren zum <strong>Pity Need</strong>?',
+			options: [
+				{ text: 'Being disbelieved (Nicht geglaubt werden)', correct: true, explanation: 'Die zentrale Angst, dass das eigene Leid bezweifelt wird' },
+				{ text: 'Being misunderstood (Missverstanden werden)', correct: true, explanation: 'Die Angst, dass andere die Situation nicht begreifen' },
+				{ text: 'Unacknowledged (Nicht anerkannt werden)', correct: false, explanation: 'Das ist eine Hidden Fear des Strength Needs' },
+				{ text: 'Peer mismatch (Nicht zur Gruppe passen)', correct: false, explanation: 'Das ist eine Hidden Fear des Acceptance Needs' }
+			]
+		},
+		{
+			type: 'matching',
+			question: 'Ordne die <strong>Hidden Fears</strong> dem richtigen <strong>Need</strong> zu:',
+			pairs: [
+				{ left: 'Significance', right: 'Feeling small' },
+				{ left: 'Approval', right: 'Disapproval' },
+				{ left: 'Acceptance', right: 'Gossip' },
+				{ left: 'Intelligence', right: 'Being seen as dumb' },
+				{ left: 'Strength', right: 'Being "punked"' },
+				{ left: 'Pity', right: 'Being disbelieved' }
+			]
+		},
+		{
+			type: 'matching',
+			question: 'Ordne die <strong>deutschen Uebersetzungen</strong> den <strong>englischen Hidden Fears</strong> zu:',
+			pairs: [
+				{ left: 'Abandonment', right: 'Verlassenwerden' },
+				{ left: 'Contempt', right: 'Verachtung' },
+				{ left: 'Peer mismatch', right: 'Nicht zur Gruppe passen' },
+				{ left: 'Being "called out"', right: 'Blosgestellt werden' },
+				{ left: 'Disrespected', right: 'Respektlos behandelt werden' }
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Hidden Fears</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Significance Need',
+					items: ['Abandonment (Verlassenwerden)', 'Social ridicule (Soziale Laecherlichkeit)', 'Being ignored (Ignoriert werden)']
+				},
+				{
+					name: 'Approval Need',
+					items: ['Dismissal (Abweisung)', 'Disapproval (Missbilligung)', 'Feeling left out (Ausgeschlossen fuehlen)']
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Hidden Fears</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Intelligence Need',
+					items: ['Being seen as dumb (Als dumm gelten)', 'Being questioned (Hinterfragt werden)', 'Being "called out" (Blosgestellt werden)']
+				},
+				{
+					name: 'Strength Need',
+					items: ['Being "punked" (Ueberrumpelt werden)', 'Disrespected (Respektlos behandelt)', 'Challenged (Herausgefordert werden)']
+				}
+			]
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Hidden Fears sind bewusste Aengste, die Menschen aktiv wahrnehmen und steuern koennen.',
+			correct: false,
+			explanation: 'Falsch - Hidden Fears sind oft unbewusst und treiben das Verhalten staerker an, als den Betroffenen klar ist.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Die zentrale Hidden Fear des Pity Needs ist die Angst, dass andere nicht glauben.',
+			correct: true,
+			explanation: 'Diese Angst fuehrt zu wiederholtem Erzaehlen von Leidensgeschichten und Eskalation der Darstellung.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'In Ueberzeugungssituationen sollte man Hidden Fears einer Person aktivieren, um sie zu manipulieren.',
+			correct: false,
+			explanation: 'Hughes empfiehlt: Vermeide es, diese Aengste zu aktivieren - oder nutze sie nur strategisch und ethisch.'
+		},
+
+		// === Aeussere Indikatoren (6MX) ===
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>aeusseren Indikatoren</strong> zeigen Menschen mit <strong>Strength Need</strong> laut 6MX?',
+			options: [
+				{ text: 'Offensichtliche Zurschaustellung von Muskulatur', correct: true, explanation: 'Koerperliche Staerke wird sichtbar gemacht' },
+				{ text: 'Kampfmarken wie Tap Out', correct: true, explanation: 'Symbole fuer Kampfsport und Staerke' },
+				{ text: 'Universitaets-Shirts und College-Ringe', correct: false, explanation: 'Das sind Indikatoren fuer Intelligence Need' },
+				{ text: 'Mitgliedschafts-Shirts von Gruppen', correct: false, explanation: 'Das sind Indikatoren fuer Acceptance Need' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>aeusseren Indikatoren</strong> zeigen Menschen mit <strong>Intelligence Need</strong> laut 6MX?',
+			options: [
+				{ text: 'Shirts mit Universitaets-Logo', correct: true, explanation: 'Zeigt intellektuelle Zugehoerigkeit' },
+				{ text: 'Absichtlich erhoehter Wortschatz', correct: true, explanation: 'Demonstriert sprachliche Kompetenz' },
+				{ text: 'Viele Tattoos mit Geschichten', correct: false, explanation: 'Das ist ein Indikator fuer Pity Need' },
+				{ text: 'Formellere Kleidung als noetig', correct: false, explanation: 'Das ist ein Indikator fuer Approval Need' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>aeusseren Indikatoren</strong> zeigen Menschen mit <strong>Acceptance Need</strong> laut 6MX?',
+			options: [
+				{ text: 'Shirts, die Mitgliedschaft in Gruppen anzeigen', correct: true, explanation: 'Signalisiert Zugehoerigkeit' },
+				{ text: 'Aendern ihr Erscheinungsbild, um der Umgebung zu gefallen', correct: true, explanation: 'Passen sich an, um dazuzugehoeren' },
+				{ text: 'Grosse Hunde aggressiver Rassen', correct: false, explanation: 'Das ist ein Indikator fuer Strength Need' },
+				{ text: 'Gebeugte Haltung und Stressreaktionen', correct: false, explanation: 'Das sind Indikatoren fuer Pity Need' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>aeusseren Indikatoren</strong> zeigen Menschen mit <strong>Approval Need</strong> laut 6MX?',
+			options: [
+				{ text: 'Formellere Kleidung oder "einen Tick besser" als die Umgebung', correct: true, explanation: 'Moechten positiv wahrgenommen werden' },
+				{ text: 'Selbstironisch, um zu hoeren, dass sie falsch liegen', correct: true, explanation: 'Suchen Bestaetigung durch Widerspruch' },
+				{ text: 'Heavy Metal oder Death Metal hoeren', correct: false, explanation: 'Das ist ein Indikator fuer Strength Need' },
+				{ text: 'College-Ringe nach dem Alter von 25', correct: false, explanation: 'Das ist ein Indikator fuer Intelligence Need' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche <strong>aeusseren Indikatoren</strong> zeigen Menschen mit <strong>Pity Need</strong> laut 6MX?',
+			options: [
+				{ text: 'Typischerweise ungesundes Erscheinungsbild', correct: true, explanation: 'Leid spiegelt sich im Aeusseren wider' },
+				{ text: 'Viele Tattoos ("Ich habe eine Geschichte zu erzaehlen")', correct: true, explanation: 'Markierungen des erlebten Leids' },
+				{ text: 'Erwidert alle Augenbrauen-Flashs', correct: false, explanation: 'Das ist ein Indikator fuer Acceptance Need' },
+				{ text: 'Steifheit im Auftreten', correct: false, explanation: 'Das ist ein Indikator fuer Approval Need' }
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>aeusseren Indikatoren</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Strength Need',
+					items: ['Grosse Hunde aggressiver Rassen', 'Absichtliche Lautstaerke', 'Vermeidet Blickkontakt bei normalen Aktivitaeten']
+				},
+				{
+					name: 'Pity Need',
+					items: ['Gebeugte Haltung', 'Sichtbare Reaktion auf kleinsten Schmerz', 'Tattoos mit gebrochenen Herzen']
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>aeusseren Indikatoren</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Intelligence Need',
+					items: ['Fliegen tragen', 'College-Ringe nach 25', 'Fragen, ob man Dinge weiss, die man nicht weiss']
+				},
+				{
+					name: 'Acceptance Need',
+					items: ['Kleinere Hunde als Haustiere', 'Starkes Gemeinschaftsgefuehl', 'Gehen anderen auf der Strasse aus dem Weg']
+				}
+			]
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Menschen mit Strength Need hoeren laut Hughes oft Heavy Metal oder Death Metal.',
+			correct: true,
+			explanation: 'Musikgeschmack kann ein aeusserer Indikator fuer das Staerke-Beduerfnis sein.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Menschen mit Acceptance Need haben laut 6MX typischerweise grosse aggressive Hunde.',
+			correct: false,
+			explanation: 'Falsch - Acceptance-orientierte Menschen haben eher kleinere Hunde. Grosse aggressive Hunde sind typisch fuer Strength Need.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Menschen mit Approval Need sind laut 6MX weniger wahrscheinlich, sich bei Restaurants zu beschweren.',
+			correct: true,
+			explanation: 'Sie vermeiden Konflikte und moechten positiv wahrgenommen werden.'
+		},
+
+		// === 6MX Beispiel-Aussagen ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich meine, es ist keine grosse Sache, es waren nur 80.000 Dollar..."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: 'Typische Herunterspielen-Strategie um dennoch Bedeutsamkeit zu zeigen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fragen' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde die Klugheit der Investition betonen' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde Unabhaengigkeit betonen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Jeder dort muss durch mich gehen, um irgendetwas genehmigt zu bekommen."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: 'Betont die eigene Wichtigkeit und Machtposition' },
+				{ text: 'Strength', correct: false, explanation: 'Strength betont Unabhaengigkeit, nicht Machtposition' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde Expertise betonen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Gruppenzugehoerigkeit betonen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich weiss nicht, ob ich die Praesentation heute schaffe; ich bin schlecht im oeffentlichen Reden."</em>',
+			options: [
+				{ text: 'Approval', correct: true, explanation: 'Selbstironische Aussage, die nach Widerspruch und Bestaetigung sucht' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde das Leiden staerker betonen' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde nie Inkompetenz zugeben' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde nie Schwaeche zeigen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Meine Freunde bombardieren mein Handy, non-stop."</em>',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: 'Betont soziale Beliebtheit und Zugehoerigkeit' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde eigene Leistung betonen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht spezifische Bestaetigung' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde ueber Probleme klagen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Diese Microchips sind ziemlich einfach, wirklich, keine grosse Sache."</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: 'Herunterspielen von Komplexitaet zeigt intellektuelle Ueberlegenheit' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde den eigenen Beitrag hervorheben' },
+				{ text: 'Strength', correct: false, explanation: 'Strength fokussiert auf Belastbarkeit' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fragen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Wie zum Teufel koennen diese Idioten das Sagen haben?"</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: 'Verwendung von "Idioten" zeigt intellektuelle Abgrenzung' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde Kontrolle fordern, nicht Dummheit kritisieren' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde eigene Bedeutung hervorheben' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde ueber eigenes Leiden klagen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich habe meiner Frau gesagt, sie soll die Klappe halten, bis wir von der Autobahn runter sind."</em>',
+			options: [
+				{ text: 'Strength', correct: true, explanation: 'Zeigt Kontrolle und Dominanz in der Beziehung' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence betont Wissen, nicht Kontrolle' },
+				{ text: 'Significance', correct: false, explanation: 'Significance betont Bedeutsamkeit, nicht Dominanz' },
+				{ text: 'Approval', correct: false, explanation: 'Approval vermeidet Konflikte' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich kann nicht glauben, dass ich eine ganze Woche krank war..."</em>',
+			options: [
+				{ text: 'Pity', correct: true, explanation: 'Betont Leiden und sucht Mitgefuehl' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde Krankheit herunterspielen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance fokussiert auf Gruppenzugehoerigkeit' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht Bestaetigung fuer Handlungen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich habe nur drei Tage, um das zu erledigen, und es ist ein Wochenprojekt."</em>',
+			options: [
+				{ text: 'Pity', correct: true, explanation: 'Betont ueberwaeltigende Situation und sucht Verstaendnis' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde die Loesung analysieren' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde sagen: Ich schaffe das' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die Wichtigkeit des Projekts betonen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich trage normalerweise keine Billigmarken."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: 'Betont Besonderheit und Abgrenzung von der Masse' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde fragen, ob die Kleidung passend ist' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde sich an die Gruppe anpassen' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence fokussiert auf Wissen, nicht Status' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich schaffe es nicht; ich habe tatsaechlich ein Motorrad-Treffen in Orlando an dem Wochenende."</em>',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: 'Betont Gruppenmitgliedschaft (Motorrad-Community)' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde die eigene Entscheidung betonen' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die eigene Wichtigkeit hervorheben' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde ueber die Belastung klagen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need verraet diese Aussage aus dem 6MX-Buch? <em>"Ich habe tatsaechlich viele Buecher darueber gelesen. Was du tun musst, ist..."</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: 'Demonstriert Wissen und uebernimmt Erklaerer-Rolle' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach der Richtigkeit fragen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde die Gruppe einbeziehen' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die eigene Wirkung betonen' }
+			]
+		},
+
+		// === Neuropeptide und Biochemie ===
+		{
+			type: 'text',
+			question: 'Was sind <strong>Neuropeptide</strong> laut Chase Hughes?',
+			answer: [
+				'kurze aminosaeureketten',
+				'aminosäureketten',
+				'aminosaeureketten',
+				'kleine verdrehte bueroklammern aus protein',
+				'proteine'
+			]
+		},
+		{
+			type: 'text',
+			question: 'Wie lautet das <strong>fuenfte Gesetz</strong> des menschlichen Verhaltens (The Laws of Human Behavior)?',
+			answer: [
+				'everyone is a drug addict',
+				'jeder mensch ist ein drogensuechtiger',
+				'jeder ist ein drogensuechtiger',
+				'jeder mensch ist ein drogensuchtiger'
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Wie beschreibt Hughes die <strong>Rezeptorstellen</strong> unserer Zellen?',
+			options: [
+				{ text: 'Wie Andockstationen an einem Raumschiff', correct: true, explanation: 'Rezeptoren koennen nur spezifische Neuropeptide empfangen' },
+				{ text: 'Wie offene Tueren fuer alle Chemikalien', correct: false, explanation: 'Falsch - Rezeptoren sind spezifisch' },
+				{ text: 'Wie zufaellige Verbindungen', correct: false, explanation: 'Falsch - Rezeptoren folgen einem spezifischen Muster' },
+				{ text: 'Wie universelle Stecker', correct: false, explanation: 'Falsch - jeder Rezeptor akzeptiert nur bestimmte Neuropeptide' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Was passiert laut Hughes mit unbenutzten <strong>Rezeptorstellen</strong>?',
+			options: [
+				{ text: 'Sie bauen sich zu dem Rezeptortyp um, der am meisten genutzt wird', correct: true, explanation: 'Die Zellen "sehen, wo die Action ist" und passen sich an' },
+				{ text: 'Sie bleiben unveraendert', correct: false, explanation: 'Falsch - Rezeptoren veraendern sich durch Nutzung' },
+				{ text: 'Sie sterben ab', correct: false, explanation: 'Falsch - sie transformieren sich' },
+				{ text: 'Sie werden deaktiviert', correct: false, explanation: 'Falsch - sie bauen sich um' }
+			]
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Ein Strength-Neuropeptid kann an einem Pity-Rezeptor andocken.',
+			correct: false,
+			explanation: 'Falsch - Rezeptoren koennen nur spezifische Neuropeptide empfangen. Das ist wie bei Andockstationen.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Die menschlichen Needs operieren auf die gleiche Weise wie Drogensucht - als chemische Abhaengigkeit.',
+			correct: true,
+			explanation: 'Hughes beschreibt Needs als biochemische Abhaengigkeit, bei der die Zellen nach bestimmten Neuropeptiden "schreien".'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Wenn der Koerper seine Need-Dosis nicht bekommt, schreien die Zellen das Gehirn an, etwas zu unternehmen.',
+			correct: true,
+			explanation: 'Die Zellen fordern das Gehirn auf: "Mach, dass etwas passiert, um diese Chemikalien freizusetzen!"'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Rezeptorstellen vermehren sich, um mehr von dem zu empfangen, was die Person staendig sucht.',
+			correct: true,
+			explanation: 'Je haeufiger ein Need befriedigt wird, desto mehr Rezeptoren entstehen dafuer - wie bei jeder Sucht.'
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Warum erklaert das Neuropeptid-Modell, warum Verhaltensaenderung so schwierig ist?',
+			options: [
+				{ text: 'Weil der Koerper physisch von bestimmten Chemikalien abhaengig geworden ist', correct: true, explanation: 'Die Zellen haben sich auf bestimmte Neuropeptide spezialisiert' },
+				{ text: 'Weil Menschen nicht wollen', correct: false, explanation: 'Es geht um biochemische, nicht willentliche Prozesse' },
+				{ text: 'Weil das Gehirn sich nicht veraendern kann', correct: false, explanation: 'Das Gehirn ist plastisch, aber die Umstellung dauert' },
+				{ text: 'Weil Needs angeboren sind', correct: false, explanation: 'Needs entstehen aus Kindheitserfahrungen, nicht aus Genetik' }
+			]
+		},
+
+		// === Erweiterte Strategien ===
+		{
+			type: 'text',
+			question: 'Wie heisst die eleganteste Strategie beim Umgang mit dem <strong>Pity Need</strong>?',
+			answer: [
+				'compliment + redirect',
+				'compliment plus redirect',
+				'kompliment und umlenken',
+				'kompliment + redirect'
+			]
+		},
+		{
+			type: 'text',
+			question: 'Wie wird das Problem genannt, wenn Menschen mit Pity Need immer mehr Empathie fordern?',
+			answer: [
+				'endless pit',
+				'fass ohne boden',
+				'endloses fass',
+				'endless pit problem'
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Wie funktioniert die <strong>Compliment + Redirect</strong> Strategie?',
+			options: [
+				{ text: 'Leiden anerkennen, dann sanft zu etwas Positivem umlenken', correct: true, explanation: 'Das Need wird kurz befriedigt, dann wird die Energie umgelenkt' },
+				{ text: 'Sofort Loesungen anbieten', correct: false, explanation: 'Wird oft als Ablehnung wahrgenommen' },
+				{ text: 'Das eigene Leid dagegenstellen', correct: false, explanation: 'Fuehrt zu Wettbewerb um Mitleid' },
+				{ text: 'Die Person ignorieren', correct: false, explanation: 'Verstaerkt die Angst, nicht geglaubt zu werden' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Was ist die <strong>Dichotomie des Strength Need</strong> laut Hughes?',
+			options: [
+				{ text: 'High-End: Fuehrungspersoenlichkeiten / Low-End: Ueberpositionierung', correct: true, explanation: 'High-End strebt nach Fuehrung, Low-End kompensiert durch Dominanzverhalten' },
+				{ text: 'Stark und Schwach', correct: false, explanation: 'Zu vereinfacht - es geht um verschiedene Auspraegungen' },
+				{ text: 'Aktiv und Passiv', correct: false, explanation: 'Nicht die Dichotomie, die Hughes beschreibt' },
+				{ text: 'Gesund und Ungesund', correct: false, explanation: 'Hughes spricht von High-End und Low-End' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Wie sollten <strong>Needs Compliments</strong> laut Hughes dosiert werden?',
+			options: [
+				{ text: 'Wie Gewuerz - sparsam und gezielt', correct: true, explanation: 'Nicht zu viel (abstumpfend) und nicht zu wenig (keine Verbindung)' },
+				{ text: 'So oft wie moeglich', correct: false, explanation: 'Zu haeufig macht die Person abgestumpft' },
+				{ text: 'Nur einmal pro Gespraech', correct: false, explanation: 'Die richtige Balance ist individuell' },
+				{ text: 'Nur am Anfang eines Gespraechs', correct: false, explanation: 'Timing nach Beobachtung ist wichtig' }
+			]
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Bei zu haeufigem Gebrauch von Needs Compliments stoppt das Gespraech, weil das Need "befriedigt" scheint.',
+			correct: true,
+			explanation: 'Die Person ist zufrieden und hat keinen Antrieb mehr, das Gespraech fortzusetzen.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Das Low-End des Strength Needs zeigt sich typischerweise bei Menschen, die gemobbt wurden.',
+			correct: true,
+			explanation: 'Sie ueberpositionieren, sprechen lauter als noetig und zeigen anderen ihre Macht.'
+		},
+		{
+			type: 'true-false',
+			question: 'Wahr oder Falsch?',
+			statement: 'Der schnellste Weg zu Rapport bei Pity Need ist, sofort Loesungen anzubieten.',
+			correct: false,
+			explanation: 'Falsch - der schnellste Weg ist die Bestaetigung der Schwere ihrer Situation, gefolgt von einer kurzen Pause.'
 		}
 	]
 };
