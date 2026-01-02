@@ -923,6 +923,304 @@ export const needsMap: Training = {
 			// Wir-Sprache(6), koenntest(11), Wir(15), koennten(16)
 			hiddenWords: [6, 11, 15, 16],
 			distractors: ['Ich-Sprache', 'solltest', 'Du', 'muessten']
+		},
+
+		// === Linguistic Indicators ===
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Significance Need</strong> hin?',
+			options: [
+				{ text: 'Legacy contribution (Vermaechtnis)', correct: true, explanation: 'Significance-orientierte Menschen wollen etwas Bleibendes hinterlassen' },
+				{ text: 'Mattering (Von Bedeutung sein)', correct: true, explanation: 'Das Gefuehl, dass man zaehlt und wichtig ist' },
+				{ text: 'Standing out (Herausragen)', correct: true, explanation: 'Sich von anderen abheben wollen' },
+				{ text: 'External validation (Externe Bestaetigung)', correct: false, explanation: 'Dies ist ein Approval-Indikator' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Approval Need</strong> hin?',
+			options: [
+				{ text: 'Seeks praise (Sucht Lob)', correct: true, explanation: 'Aktives Suchen nach Anerkennung' },
+				{ text: 'Fear of disapproval (Angst vor Missbilligung)', correct: true, explanation: 'Furcht vor negativem Feedback' },
+				{ text: 'External validation (Externe Bestaetigung)', correct: true, explanation: 'Benoetigt aeussere Zustimmung' },
+				{ text: 'Craves belonging (Sehnt sich nach Zugehoerigkeit)', correct: false, explanation: 'Dies ist ein Acceptance-Indikator' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Acceptance Need</strong> hin?',
+			options: [
+				{ text: 'Being welcomed (Willkommen geheissen werden)', correct: true, explanation: 'Das Gefuehl, erwuenscht zu sein' },
+				{ text: 'Fear of rejection (Angst vor Ablehnung)', correct: true, explanation: 'Fundamentale Zurueckweisungsangst' },
+				{ text: 'Social belonging (Soziale Zugehoerigkeit)', correct: true, explanation: 'Gruppenintegration ist zentral' },
+				{ text: 'Proving value (Wert beweisen)', correct: false, explanation: 'Dies ist ein Significance-Indikator' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Intelligence Need</strong> hin?',
+			options: [
+				{ text: 'Fear of appearing incompetent (Angst inkompetent zu wirken)', correct: true, explanation: 'Furcht vor Bloesstellung' },
+				{ text: 'Cognitive self-worth (Kognitiver Selbstwert)', correct: true, explanation: 'Wert durch Intelligenz definiert' },
+				{ text: 'Intellectual identity (Intellektuelle Identitaet)', correct: true, explanation: 'Identifikation ueber Intelligenz' },
+				{ text: 'Endurance (Ausdauer)', correct: false, explanation: 'Dies ist ein Strength-Indikator' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Strength Need</strong> hin?',
+			options: [
+				{ text: 'Emotional durability (Emotionale Belastbarkeit)', correct: true, explanation: 'Gefuehlsmaessige Ausdauer zeigen' },
+				{ text: 'Avoids dependence (Vermeidet Abhaengigkeit)', correct: true, explanation: 'Keine Hilfe brauchen wollen' },
+				{ text: 'Personal fortitude (Persoenliche Standhaftigkeit)', correct: true, explanation: 'Innere Staerke demonstrieren' },
+				{ text: 'Attention through suffering (Aufmerksamkeit durch Leiden)', correct: false, explanation: 'Dies ist ein Pity-Indikator' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welche Ausdruecke deuten auf ein <strong>Pity Need</strong> hin?',
+			options: [
+				{ text: 'Attention through suffering (Aufmerksamkeit durch Leiden)', correct: true, explanation: 'Leid als Mittel zur Beachtung' },
+				{ text: 'Identity built on adversity (Identitaet auf Widrigkeiten aufgebaut)', correct: true, explanation: 'Leid als Identitaetskern' },
+				{ text: 'Pain as bonding agent (Schmerz als Bindungsmittel)', correct: true, explanation: 'Leid als Verbindungselement' },
+				{ text: 'Being welcomed (Willkommen geheissen werden)', correct: false, explanation: 'Dies ist ein Acceptance-Indikator' }
+			]
+		},
+
+		// === Linguistic Indicators Kategorisierung ===
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Linguistic Indicators</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Significance Need',
+					items: ['Existential relevance (Existenzielle Relevanz)', 'Proving value (Wert beweisen)', 'Lasting emotional impact (Dauerhafter Einfluss)']
+				},
+				{
+					name: 'Approval Need',
+					items: ['Conditional self-worth (Bedingter Selbstwert)', 'Needing to be liked (Gemocht werden muessen)', 'Vulnerability to judgement (Empfindlich bei Kritik)']
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Linguistic Indicators</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Intelligence Need',
+					items: ['Cognitive control (Kognitive Kontrolle)', 'Mental acuity (Geistige Schaerfe)', 'Always being prepared (Immer vorbereitet sein)']
+				},
+				{
+					name: 'Strength Need',
+					items: ['Resist being overwhelmed (Widerstand gegen Ueberwaeltigung)', 'Bouncing back (Zurueckfedern)', 'Inner resourcefulness (Innere Findigkeit)']
+				}
+			]
+		},
+		{
+			type: 'categorization',
+			question: 'Ordne die <strong>Linguistic Indicators</strong> dem richtigen <strong>Need</strong> zu:',
+			categories: [
+				{
+					name: 'Acceptance Need',
+					items: ['Emotional security via inclusion (Sicherheit durch Einschluss)', 'Craves belonging (Sehnt sich nach Zugehoerigkeit)', 'Fear of being found out (Angst als Aussenseiter enttarnt zu werden)']
+				},
+				{
+					name: 'Pity Need',
+					items: ['Staying in the low points (In Tiefpunkten verweilen)', 'Noticed through suffering (Durch Leiden bemerkt werden)', 'Emotional dependency (Emotionale Abhaengigkeit)']
+				}
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Significance ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ohne mich waere das Projekt komplett gescheitert. Ich habe das quasi im Alleingang gerettet."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: 'Typische Significance-Sprache: "Ohne mich" betont die eigene Wirkung, "im Alleingang" die Einzigartigkeit' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde Durchhaltevermoegen betonen ("Ich habe durchgehalten"), nicht Einzigartigkeit' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fragen ("War das so richtig?")' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde analytische Faehigkeiten betonen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ich habe da wirklich etwas bewirkt. Die Leute werden sich noch lange an meinen Beitrag erinnern."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: '"Etwas bewirkt" (Impact) und "erinnern" (Legacy) sind klassische Significance-Indikatoren' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde Leiden und Schwierigkeiten betonen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Zugehoerigkeit zur Gruppe betonen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht spezifische Bestaetigung, nicht allgemeine Wirkung' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Das kann nicht jeder so wie ich. Ich habe da eine besondere Faehigkeit."</em>',
+			options: [
+				{ text: 'Significance', correct: true, explanation: '"Nicht jeder so wie ich" und "besondere Faehigkeit" zeigen Exceptionality - eine der drei Saeulen des Significance Needs' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde konkrete Expertise oder Wissen betonen' },
+				{ text: 'Strength', correct: false, explanation: 'Strength betont Belastbarkeit, nicht Einzigartigkeit' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance will Teil der Gruppe sein, nicht herausragen' }
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Approval ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ist das so richtig, wie ich das gemacht habe? Ich bin mir nicht sicher, ob das deinen Erwartungen entspricht."</em>',
+			options: [
+				{ text: 'Approval', correct: true, explanation: '"Ist das so richtig?" und "deinen Erwartungen entspricht" sind klassische Approval-Indikatoren - Suche nach spezifischer Bestaetigung' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde nach Zugehoerigkeit fragen, nicht nach Richtigkeit' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde eigene Kompetenz darstellen, nicht anzweifeln' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde Leiden betonen, nicht Unsicherheit ueber Richtigkeit' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Hab ich da einen Fehler gemacht? Sag mir bitte genau, was ich besser machen kann."</em>',
+			options: [
+				{ text: 'Approval', correct: true, explanation: 'Die Suche nach spezifischem Feedback ("genau, was ich besser machen kann") ist typisch fuer Approval Need' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde eigene Leistungen hervorheben, nicht Fehler hinterfragen' },
+				{ text: 'Strength', correct: false, explanation: 'Strength vermeidet es, Schwaeche oder Unsicherheit zu zeigen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance fragt nach Zugehoerigkeit, nicht nach Leistungsbeurteilung' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ich hoffe wirklich, dass das so passt. Ich habe mir solche Muehe gegeben, es richtig zu machen."</em>',
+			options: [
+				{ text: 'Approval', correct: true, explanation: '"Hoffe dass das passt" und "richtig zu machen" zeigen die Abhaengigkeit von externer Bestaetigung' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde die Muehe als Leiden darstellen und Mitleid erwarten' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde die Qualitaet der Arbeit analysieren, nicht hoffen' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde den eigenen Beitrag hervorheben, nicht auf Bestaetigung warten' }
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Acceptance ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Wir sollten das gemeinsam entscheiden. Ich will hier nicht alleine vorpreschen."</em>',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: '"Wir" und "gemeinsam" sind Wir-Sprache - typisch fuer Acceptance Need. "Nicht alleine vorpreschen" zeigt Vermeidung von Herausragen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fuer eigene Entscheidung fragen' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde gerne die Fuehrung uebernehmen' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde unabhaengig entscheiden wollen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ich will hier keinen Aerger machen. Passt das so fuer alle?"</em>',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: '"Keinen Aerger machen" zeigt Vermeidung von Konflikt, "fuer alle" betont Gruppenharmonie - beides Acceptance-Indikatoren' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde eigene Schwierigkeiten betonen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval fragt nach Richtigkeit, nicht nach Gruppenharmonie' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde logische Argumente vorbringen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Wir als Team haben das geschafft. Ich bin froh, Teil dieser Gruppe zu sein."</em>',
+			options: [
+				{ text: 'Acceptance', correct: true, explanation: '"Wir als Team" und "Teil dieser Gruppe" zeigen starke Zugehoerigkeitsorientierung' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde den eigenen Beitrag hervorheben, nicht das Team' },
+				{ text: 'Strength', correct: false, explanation: 'Strength betont Unabhaengigkeit, nicht Teamzugehoerigkeit' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht Bestaetigung, nicht Gruppenzugehoerigkeit' }
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Intelligence ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Logisch betrachtet muesste man das anders angehen. Wenn man die Fakten analysiert, ist die Schlussfolgerung eindeutig."</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: '"Logisch betrachtet", "Fakten analysiert" und "Schlussfolgerung" zeigen strukturiertes, analytisches Denken - typisch fuer Intelligence Need' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde fragen, ob die Analyse richtig ist' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die eigene Wirkung betonen, nicht die Logik' },
+				{ text: 'Strength', correct: false, explanation: 'Strength kommuniziert kurz und handlungsorientiert, nicht analytisch' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Eigentlich ist das ganz einfach, wenn man es richtig versteht. Lass mich das mal erklaeren."</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: '"Richtig verstehen" und "erklaeren" sind klassische Intelligence-Indikatoren - Verstehen und Erklaeren ist ihre Ancestral Superpower' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die eigene Besonderheit betonen, nicht erklaeren wollen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Gemeinsamkeiten suchen, nicht belehren' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fragen, nicht selbst erklaeren' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Die Daten zeigen eindeutig, dass wir hier einen anderen Ansatz brauchen. Ich habe das ausfuehrlich recherchiert."</em>',
+			options: [
+				{ text: 'Intelligence', correct: true, explanation: '"Daten zeigen", "eindeutig" und "ausfuehrlich recherchiert" demonstrieren kognitiven Wert und intellektuelle Gruendlichkeit' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde kurz und handlungsorientiert kommunizieren' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde Schwierigkeiten bei der Recherche betonen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Gruppenentscheidung betonen, nicht eigene Recherche' }
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Strength ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Das schaffe ich schon alleine. Ich brauche da keine Hilfe."</em>',
+			options: [
+				{ text: 'Strength', correct: true, explanation: '"Alleine" und "keine Hilfe brauchen" zeigen Unabhaengigkeit und Selbststaendigkeit - Kernmerkmale des Strength Needs' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die Einzigartigkeit betonen, nicht die Unabhaengigkeit' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde erlaeutern, wie es geloest wird' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde nach Bestaetigung fragen, nicht Hilfe ablehnen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ich halte das durch, egal wie schwer es wird. Aufgeben ist keine Option."</em>',
+			options: [
+				{ text: 'Strength', correct: true, explanation: '"Durchhalten" und "Aufgeben keine Option" zeigen Grit (Durchhaltevermoegen) und Resilience - zentrale Strength-Werte' },
+				{ text: 'Pity', correct: false, explanation: 'Pity wuerde die Schwere betonen und Mitgefuehl erwarten' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die Bedeutung der Aufgabe betonen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Unterstuetzung der Gruppe suchen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Respektier meine Entscheidung. Ich weiss, was ich tue."</em>',
+			options: [
+				{ text: 'Strength', correct: true, explanation: '"Respektier" und "Ich weiss was ich tue" zeigen das Streben nach Respekt und Kontrolle - zentrale Strength-Werte' },
+				{ text: 'Approval', correct: false, explanation: 'Approval wuerde fragen, ob die Entscheidung richtig ist' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde die Entscheidung logisch begruenden' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde die Wichtigkeit der Entscheidung betonen' }
+			]
+		},
+
+		// === Textbasierte Need-Erkennung: Pity ===
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Du glaubst nicht, was mir schon wieder passiert ist. Ich habe so ein Pech in letzter Zeit."</em>',
+			options: [
+				{ text: 'Pity', correct: true, explanation: '"Du glaubst nicht" signalisiert die Angst, nicht geglaubt zu werden. "So ein Pech" betont das eigene Leiden - beides Pity-Indikatoren' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde Gruppenzugehoerigkeit betonen, nicht eigenes Pech' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde niemals Pech oder Schwaeche eingestehen' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde Erfolge teilen, nicht Misserfolge' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Keiner versteht, was ich durchmachen muss. Es ist wirklich hart fuer mich gerade."</em>',
+			options: [
+				{ text: 'Pity', correct: true, explanation: '"Keiner versteht" und "was ich durchmachen muss" zeigen die Suche nach Anerkennung des Leidens und Empathie' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht Bestaetigung fuer Handlungen, nicht Mitgefuehl' },
+				{ text: 'Intelligence', correct: false, explanation: 'Intelligence wuerde die Situation analysieren, nicht beklagen' },
+				{ text: 'Acceptance', correct: false, explanation: 'Acceptance wuerde sich der Gruppe anpassen, nicht klagen' }
+			]
+		},
+		{
+			type: 'multiple-choice',
+			question: 'Welches Need zeigt folgende Aussage? <em>"Ich habe es so schwer gehabt in meinem Leben. Du kannst dir das gar nicht vorstellen."</em>',
+			options: [
+				{ text: 'Pity', correct: true, explanation: '"So schwer gehabt" und "kannst dir das nicht vorstellen" zeigen Identity built on adversity und die Suche nach Validierung des Leidens' },
+				{ text: 'Strength', correct: false, explanation: 'Strength wuerde Schwierigkeiten nicht betonen, sondern ueberwindung' },
+				{ text: 'Significance', correct: false, explanation: 'Significance wuerde Erfolge trotz Schwierigkeiten betonen' },
+				{ text: 'Approval', correct: false, explanation: 'Approval sucht Bestaetigung fuer Richtigkeit, nicht Mitgefuehl' }
+			]
 		}
 	]
 };
