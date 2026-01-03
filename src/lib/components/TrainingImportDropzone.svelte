@@ -50,9 +50,9 @@
 		const errors: string[] = [];
 
 		for (const file of Array.from(files)) {
-			// Nur JSON-Dateien akzeptieren
-			if (!file.name.endsWith('.json')) {
-				errors.push(`${file.name}: Nur JSON-Dateien erlaubt`);
+			// JSON- und TXT-Dateien akzeptieren (TXT kann JSON enthalten)
+			if (!file.name.endsWith('.json') && !file.name.endsWith('.txt')) {
+				errors.push(`${file.name}: Nur JSON- oder TXT-Dateien erlaubt`);
 				continue;
 			}
 
@@ -149,7 +149,7 @@
 	<input
 		bind:this={fileInput}
 		type="file"
-		accept=".json"
+		accept=".json,.txt"
 		multiple
 		onchange={handleFileSelect}
 		hidden
