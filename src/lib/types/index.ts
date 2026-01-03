@@ -73,6 +73,12 @@ export interface Training {
 	id: string;
 	name: string;
 	questions: Question[];
+	// Optionale Felder für importierte Trainings
+	source?: 'builtin' | 'imported';
+	sourceUrl?: string;
+	version?: string;
+	author?: string;
+	description?: string;
 }
 
 export interface QuestionScore {

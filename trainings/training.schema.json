@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vokabeltrainer.example.com/training.schema.json",
+  "title": "Training",
+  "description": "Schema für Vokabeltrainer-Trainingsdateien",
+  "type": "object",
+  "required": ["id", "name", "questions"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Eindeutige ID des Trainings (kebab-case)"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Anzeigename des Trainings"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Versionsnummer (semver)"
+    },
+    "author": {
+      "type": "string",
+      "description": "Name des Autors"
+    },
+    "description": {
+      "type": "string",
+      "description": "Beschreibung des Trainings"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date",
+      "description": "Erstellungsdatum (YYYY-MM-DD)"
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/Question"
+      },
+      "description": "Liste der Fragen"
+    }
+  },
+  "definitions": {
+    "Question": {
+      "oneOf": [
+        { "$ref": "#/definitions/TextQuestion" },
+        { "$ref": "#/definitions/MultipleChoiceQuestion" },
+        { "$ref": "#/definitions/DiceTextQuestion" },
+        { "$ref": "#/definitions/WordSearchQuestion" },
+        { "$ref": "#/definitions/TrueFalseQuestion" },
+        { "$ref": "#/definitions/MatchingQuestion" },
+        { "$ref": "#/definitions/CategorizationQuestion" }
+      ]
+    },
+    "TextQuestion": {
+      "type": "object",
+      "required": ["type", "question", "answer"],
+      "properties": {
+        "type": { "const": "text" },
+        "question": { "type": "string", "minLength": 1 },
+        "answer": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "array", "items": { "type": "string", "minLength": 1 }, "minItems": 1 }
+          ],
+          "description": "Richtige Antwort(en) - String oder Array von Strings"
+        },
+        "initialValue": {
+          "type": "string",
+          "description": "Vorausgefüllter Wert im Eingabefeld"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MultipleChoiceQuestion": {
+      "type": "object",
+      "required": ["type", "question", "options"],
+      "properties": {
+        "type": { "const": "multiple-choice" },
+        "question": { "type": "string", "minLength": 1 },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["text", "correct"],
+            "properties": {
+              "text": { "type": "string", "minLength": 1 },
+              "correct": { "type": "boolean" },
+              "explanation": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "DiceTextQuestion": {
+      "type": "object",
+      "required": ["type", "question", "text", "hiddenWords"],
+      "properties": {
+        "type": { "const": "dice-text" },
+        "question": { "type": "string", "minLength": 1 },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Vollständiger Text mit Wörtern zum Verstecken"
+        },
+        "hiddenWords": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0 },
+          "minItems": 1,
+          "description": "Indizes der zu versteckenden Wörter (0-basiert)"
+        },
+        "distractors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Zusätzliche Ablenkungswörter"
+        }
+      },
+      "additionalProperties": false
+    },
+    "WordSearchQuestion": {
+      "type": "object",
+      "required": ["type", "title", "question", "answer"],
+      "properties": {
+        "type": { "const": "word-search" },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Titel/Kontext der Wortsuche"
+        },
+        "question": { "type": "string", "minLength": 1 },
+        "answer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Das zu findende Wort"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TrueFalseQuestion": {
+      "type": "object",
+      "required": ["type", "question", "statement", "correct"],
+      "properties": {
+        "type": { "const": "true-false" },
+        "question": { "type": "string", "minLength": 1 },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Die zu bewertende Aussage"
+        },
+        "correct": {
+          "type": "boolean",
+          "description": "true = Aussage ist wahr, false = Aussage ist falsch"
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Erklärung zur richtigen Antwort"
+        }
+      },
+      "additionalProperties": false
+    },
+    "MatchingQuestion": {
+      "type": "object",
+      "required": ["type", "question", "pairs"],
+      "properties": {
+        "type": { "const": "matching" },
+        "question": { "type": "string", "minLength": 1 },
+        "pairs": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["left", "right"],
+            "properties": {
+              "left": { "type": "string", "minLength": 1 },
+              "right": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "description": "Zuordnungspaare (links <-> rechts)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CategorizationQuestion": {
+      "type": "object",
+      "required": ["type", "question", "categories"],
+      "properties": {
+        "type": { "const": "categorization" },
+        "question": { "type": "string", "minLength": 1 },
+        "categories": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["name", "items"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "items": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "minItems": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "description": "Kategorien mit zugehörigen Elementen"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

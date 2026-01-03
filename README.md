@@ -18,6 +18,33 @@ Webbasierte Lernplattform für Vokabeln und Wissensfragen mit Spaced Repetition.
 - **Spaced Repetition** Algorithmus für effektives Lernen
 - **LocalStorage** Persistierung aller Fortschritte
 - **Tastaturkürzel** für effizientes Arbeiten
+- **Training-Import** per Drag & Drop, Dateiauswahl oder URL
+
+## Training importieren
+
+Der Vokabeltrainer unterstützt externe Trainingsdateien im JSON-Format.
+
+### Import-Methoden
+
+1. **Drag & Drop**: Ziehe JSON-Dateien direkt in die Import-Zone
+2. **Dateiauswahl**: Klicke auf "Dateien auswählen"
+3. **URL-Import**: Füge eine URL zu einer JSON-Datei ein
+4. **Bookmark-Link**: Öffne die App mit `?import=<URL>` Parameter
+
+### Beispiel-Training
+
+Teste die Import-Funktion mit dem Beispiel-Training:
+
+```
+https://stho32.github.io/Vokabeltrainer-v3/?import=https://raw.githubusercontent.com/stho32/Vokabeltrainer-v3/main/trainings/beispiel.training.json
+```
+
+### Eigene Trainings erstellen
+
+Siehe [trainings/README.md](./trainings/README.md) für:
+- JSON-Schema Dokumentation
+- Alle unterstützten Fragentypen
+- VS Code Schema-Validierung
 
 ## Anforderungen
 
