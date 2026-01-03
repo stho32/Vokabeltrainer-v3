@@ -342,12 +342,25 @@
 
 	.grid-cell.cursor {
 		border-color: var(--color-primary);
-		box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
+	}
+
+	.grid-cell.cursor.selected {
+		background-color: var(--color-primary);
+		border-color: white;
+		color: white;
+		font-weight: 700;
+		transform: scale(1.05);
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.6), 0 2px 8px rgba(59, 130, 246, 0.4);
 	}
 
 	.grid-cell.selected {
-		background-color: #e0f2fe;
+		background-color: var(--color-primary);
 		border-color: var(--color-primary);
+		color: white;
+		font-weight: 700;
+		transform: scale(1.05);
+		box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
 	}
 
 	.grid-cell.correct {
