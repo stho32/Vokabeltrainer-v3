@@ -1,2 +1,2 @@
 // Re-export all trainings
-export { needsMap } from './needs-map';
+export { testTraining } from './test-training';

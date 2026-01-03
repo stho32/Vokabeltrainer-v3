@@ -1,13 +1,12 @@
 // Training data for Vokabeltrainer
-// Quelle: NCI Graduate School - Applied Behavior Research (Chase Hughes)
 import type { Training } from '$lib/types';
 import { importedTrainingsStore } from '$lib/stores/imported-trainings.svelte';
 
 // Import all trainings from separate files
-import { needsMap } from './trainings/needs-map';
+import { testTraining } from './trainings/test-training';
 
 // Eingebaute Trainings (mit source markiert)
-const builtinTrainings: Training[] = [{ ...needsMap, source: 'builtin' as const }];
+const builtinTrainings: Training[] = [{ ...testTraining, source: 'builtin' as const }];
 
 // Abwärtskompatibilität: Export der eingebauten Trainings
 export const trainings: Training[] = builtinTrainings;
@@ -45,4 +44,4 @@ export function isImportedTraining(id: string): boolean {
 }
 
 // Re-export individual trainings for direct access
-export { needsMap };
+export { testTraining };
