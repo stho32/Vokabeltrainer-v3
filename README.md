@@ -31,20 +31,25 @@ Der Vokabeltrainer unterstützt externe Trainingsdateien im JSON-Format.
 3. **URL-Import**: Füge eine URL zu einer JSON-Datei ein
 4. **Bookmark-Link**: Öffne die App mit `?import=<URL>` Parameter
 
-### Beispiel-Trainings
-
-Teste die Import-Funktion:
-
-- [Beispiel-Training importieren](https://stho32.github.io/Vokabeltrainer-v3/?import=https://raw.githubusercontent.com/stho32/Vokabeltrainer-v3-Trainings/main/beispiel.training.json)
-- [Needs-Map Training importieren](https://stho32.github.io/Vokabeltrainer-v3/?import=https://raw.githubusercontent.com/stho32/Vokabeltrainer-v3-Trainings/main/needs-map.training.json)
-
 ### Eigene Trainings erstellen
 
-Trainingsdateien werden in einem separaten Repository verwaltet. Siehe [Vokabeltrainer-v3-Trainings](https://github.com/stho32/Vokabeltrainer-v3-Trainings) für:
-- JSON-Schema Dokumentation
-- Alle unterstützten Fragentypen
-- VS Code Schema-Validierung
-- Beispiel-Trainings
+Erstelle eine JSON-Datei mit folgendem Format:
+
+```json
+{
+  "id": "mein-training",
+  "name": "Mein Training",
+  "questions": [
+    {
+      "type": "text",
+      "question": "Was ist 2 + 2?",
+      "answer": ["4", "vier"]
+    }
+  ]
+}
+```
+
+Unterstützte Fragentypen: `text`, `multiple-choice`, `true-false`, `dice-text`, `matching`, `categorization`
 
 ## Anforderungen
 
