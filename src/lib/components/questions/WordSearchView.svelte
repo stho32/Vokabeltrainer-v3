@@ -20,10 +20,55 @@
 	let gridData = $state<GridResult | null>(null);
 	let selectedCells = $state<Set<string>>(new Set());
 	let isDragging = $state(false);
+	let dragStartRow = $state(0);
+	let dragStartCol = $state(0);
 	let wasCorrect = $state<boolean | null>(null);
 	let cursorRow = $state(0);
 	let cursorCol = $state(0);
 	let gridRef: HTMLDivElement | undefined = $state();
+
+	// Linien-Berechnung: Ermittelt die dominante Richtung (horizontal, vertikal, diagonal)
+	function getSnappedDirection(dx: number, dy: number): { dRow: number; dCol: number } {
+		const absDx = Math.abs(dx);
+		const absDy = Math.abs(dy);
+
+		if (absDx === 0 && absDy === 0) {
+			return { dRow: 0, dCol: 0 };
+		} else if (absDx > 2 * absDy) {
+			// Horizontal
+			return { dRow: 0, dCol: Math.sign(dx) };
+		} else if (absDy > 2 * absDx) {
+			// Vertikal
+			return { dRow: Math.sign(dy), dCol: 0 };
+		} else {
+			// Diagonal
+			return { dRow: Math.sign(dy), dCol: Math.sign(dx) };
+		}
+	}
+
+	// Berechnet alle Zellen auf einer eingerasteten Linie vom Start zum Endpunkt
+	function calculateLineSelection(
+		startRow: number,
+		startCol: number,
+		endRow: number,
+		endCol: number
+	): Set<string> {
+		const dx = endCol - startCol;
+		const dy = endRow - startRow;
+		const { dRow, dCol } = getSnappedDirection(dx, dy);
+		const length = Math.max(Math.abs(dx), Math.abs(dy));
+
+		const cells = new Set<string>();
+		for (let i = 0; i <= length; i++) {
+			const row = startRow + i * dRow;
+			const col = startCol + i * dCol;
+			// Nur Zellen innerhalb des Grids hinzufügen
+			if (gridData && row >= 0 && row < gridData.grid.length && col >= 0 && col < gridData.grid.length) {
+				cells.add(`${row}-${col}`);
+			}
+		}
+		return cells;
+	}
 
 	// Track question hash to detect question changes
 	let lastQuestionHash = $state('');
@@ -79,22 +124,64 @@
 	function handleCellMouseDown(row: number, col: number) {
 		if (evaluated) return;
 		isDragging = true;
-		selectedCells.clear();
-		toggleCell(row, col);
+		dragStartRow = row;
+		dragStartCol = col;
 		cursorRow = row;
 		cursorCol = col;
+		// Nur Startzelle auswählen
+		selectedCells = new Set([`${row}-${col}`]);
 	}
 
 	function handleCellMouseEnter(row: number, col: number) {
 		if (!isDragging || evaluated) return;
-		const key = `${row}-${col}`;
-		if (!selectedCells.has(key)) {
-			selectedCells.add(key);
-			selectedCells = new Set(selectedCells);
-		}
+		// Linie vom Startpunkt zur aktuellen Position berechnen
+		selectedCells = calculateLineSelection(dragStartRow, dragStartCol, row, col);
+		cursorRow = row;
+		cursorCol = col;
 	}
 
 	function handleMouseUp() {
+		isDragging = false;
+	}
+
+	// Touch-Handler für mobile Geräte
+	function handleTouchStart(row: number, col: number, event: TouchEvent) {
+		if (evaluated) return;
+		event.preventDefault(); // Verhindert Scrollen während der Auswahl
+		isDragging = true;
+		dragStartRow = row;
+		dragStartCol = col;
+		cursorRow = row;
+		cursorCol = col;
+		selectedCells = new Set([`${row}-${col}`]);
+	}
+
+	function handleTouchMove(event: TouchEvent) {
+		if (!isDragging || evaluated || !gridRef) return;
+		event.preventDefault();
+
+		const touch = event.touches[0];
+		const element = document.elementFromPoint(touch.clientX, touch.clientY);
+
+		if (element?.classList.contains('grid-cell')) {
+			// Finde die Zellposition aus dem Element
+			const row = element.closest('.grid-row');
+			if (row && gridRef) {
+				const rows = Array.from(gridRef.querySelectorAll('.grid-row'));
+				const rowIndex = rows.indexOf(row);
+				const cells = Array.from(row.querySelectorAll('.grid-cell'));
+				const colIndex = cells.indexOf(element as HTMLElement);
+
+				if (rowIndex >= 0 && colIndex >= 0) {
+					selectedCells = calculateLineSelection(dragStartRow, dragStartCol, rowIndex, colIndex);
+					cursorRow = rowIndex;
+					cursorCol = colIndex;
+				}
+			}
+		}
+	}
+
+	function handleTouchEnd() {
 		isDragging = false;
 	}
 
@@ -164,9 +251,11 @@
 	$effect(() => {
 		window.addEventListener('trigger-submit', handleTriggerSubmit);
 		window.addEventListener('mouseup', handleMouseUp);
+		window.addEventListener('touchend', handleTouchEnd);
 		return () => {
 			window.removeEventListener('trigger-submit', handleTriggerSubmit);
 			window.removeEventListener('mouseup', handleMouseUp);
+			window.removeEventListener('touchend', handleTouchEnd);
 		};
 	});
 
@@ -227,6 +316,7 @@
 			role="grid"
 			aria-label="Buchstabengitter"
 			onkeydown={handleKeydown}
+			ontouchmove={handleTouchMove}
 		>
 			{#each gridData.grid as row, rowIndex}
 				<div class="grid-row" role="row">
@@ -236,6 +326,7 @@
 							role="gridcell"
 							onmousedown={() => handleCellMouseDown(rowIndex, colIndex)}
 							onmouseenter={() => handleCellMouseEnter(rowIndex, colIndex)}
+							ontouchstart={(e) => handleTouchStart(rowIndex, colIndex, e)}
 							disabled={evaluated}
 						>
 							{cell}
