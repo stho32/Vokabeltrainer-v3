@@ -42,6 +42,11 @@
 		trainingSessionStore.next();
 	}
 
+	function handleSkip() {
+		logger.action('TrainingPage', 'Click: Überspringen');
+		trainingSessionStore.next();
+	}
+
 	function handleBackToSelection() {
 		logger.action('TrainingPage', 'Click: Zurück zur Auswahl');
 		trainingSessionStore.end();
@@ -109,6 +114,9 @@
 
 		<div class="controls">
 			{#if !trainingSessionStore.isEvaluated}
+				<button class="skip-button" onclick={handleSkip}>
+					Überspringen
+				</button>
 				<button class="reveal-button" onclick={handleReveal} disabled={trainingSessionStore.isRevealed}>
 					Antwort anzeigen
 				</button>
@@ -268,6 +276,17 @@
 	.controls button:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
+	}
+
+	.skip-button {
+		background-color: #fff;
+		color: #666;
+		border: 2px solid var(--color-border) !important;
+		flex: 0.5 !important;
+	}
+
+	.skip-button:hover:not(:disabled) {
+		background-color: #f5f5f5;
 	}
 
 	.reveal-button {
