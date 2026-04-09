@@ -36,7 +36,7 @@ Die Auswahl von Buchstaben im Word Search Rätsel soll durch eine Linien-basiert
 
 ## Status
 
-- [x] Implementiert
+- [x] Abgeschlossen
 
 ## Technische Details
 
